@@ -1,45 +1,34 @@
 package model;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.io.*;
+import java.net.*;
 
 public class Client {
 
+	public static Socket socket = null;
+	public static Thread t1;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Socket socket;
-		InputStream inStream;
-		OutputStream outStream;
-		BufferedReader bufferReader;
+	
 		
-		try {
-			socket = new Socket("localhost", 4578);
-			inStream = socket.getInputStream();
-			outStream = socket.getOutputStream();
-			
-			/* --- Ce qu'on envoie au serveur --- */
-			PrintStream ps = new PrintStream(outStream);
-			ps.println("connexation ");
-			
-			bufferReader = new BufferedReader(new InputStreamReader(inStream));
-			String response = bufferReader.readLine();
-			System.out.println("reponse du serveur : "+ response);
-			socket.close();
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	try {
 		
+		System.out.println("Demande de connexion");
+		socket = new Socket("127.0.0.1",2009);
+		System.out.println("Connexion établie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connecté
+		
+		t1 = new Thread(new ConnectionClient(socket));
+		t1.start();
+		
+		
+		
+	} catch (UnknownHostException e) {
+	  System.err.println("Impossible de se connecter à l'adresse "+socket.getLocalAddress());
+	} catch (IOException e) {
+	  System.err.println("Aucun serveur à l'écoute du port "+socket.getLocalPort());
+	}
+	
+	
 
-}
+	}
 
 }
