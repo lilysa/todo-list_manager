@@ -104,8 +104,14 @@
                   <TextArea fx:id="descriptionText" prefHeight="57.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets right="50.0" />
-                     </GridPane.margin></TextArea>
-                  <TextField fx:id="taskNameDisplay" GridPane.columnIndex="1" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="Yu Gothic Regular" size="18.0" />
+                     </font></TextArea>
+                  <TextField fx:id="taskNameDisplay" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="18.0" />
+                     </font></TextField>
                   <DatePicker fx:id="endDateDisplay" prefHeight="25.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ChoiceBox fx:id="choosePriority" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ChoiceBox fx:id="chooseState" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
