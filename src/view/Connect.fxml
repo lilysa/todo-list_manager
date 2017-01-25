@@ -45,12 +45,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="en_cours" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                   </VBox>
@@ -65,12 +65,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                           </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="urgentes" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                      <GridPane.margin>
@@ -88,12 +88,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                           </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="finies" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                      <GridPane.margin>
@@ -111,12 +111,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                           </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="non_attribuees" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                      <GridPane.margin>
@@ -134,12 +134,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                           </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="vos_taches" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                      <GridPane.margin>
@@ -157,12 +157,12 @@
                            </VBox.margin>
                         </Label>
                         <ScrollPane prefHeight="294.0" prefWidth="273.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                           </content>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
+                           <content>
+                              <VBox fx:id="pretes" prefHeight="270.0" prefWidth="260.0" />
+                           </content>
                         </ScrollPane>
                      </children>
                      <GridPane.margin>
