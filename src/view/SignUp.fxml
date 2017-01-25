@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <HBox alignment="CENTER" minHeight="350.0" minWidth="500.0" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -48,28 +49,36 @@
                         <Font name="Yu Gothic Regular" size="28.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1">
+                  <TextField fx:id="userName" GridPane.columnIndex="1">
                      <font>
                         <Font name="Yu Gothic Regular" size="28.0" />
                      </font>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Yu Gothic Regular" size="28.0" />
                      </font>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Yu Gothic Regular" size="28.0" />
                      </font>
                   </TextField>
                </children>
             </GridPane>
-            <Button id="SignUpButton" alignment="CENTER" mnemonicParsing="false" prefHeight="64.0" prefWidth="258.0" text="Créer un compte">
+            <Button id="SignUpButton" fx:id="createAccount" alignment="CENTER" mnemonicParsing="false" prefHeight="64.0" prefWidth="258.0" style="-fx-background-color: #aaee9b; -fx-border-color: #344747;" text="Créer un compte">
                <font>
                   <Font name="Yu Gothic Regular" size="28.0" />
                </font>
             </Button>
+            <Hyperlink fx:id="home" text="Retour à l'accueil">
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+               <font>
+                  <Font name="Yu Gothic Regular" size="15.0" />
+               </font>
+            </Hyperlink>
          </children>
       </VBox>
    </children>
