@@ -55,7 +55,7 @@ public class Authentification implements Runnable {
 		
 		boolean connexion = false;
 		try {
-			Scanner sc = new Scanner(new File("test.txt"));
+			Scanner sc = new Scanner(new File("Resources/login.txt"));
 			
 			
 			while(sc.hasNext()){
@@ -64,7 +64,7 @@ public class Authentification implements Runnable {
 				  break;
 				}
              }
-			
+			sc.close();
 		} catch (FileNotFoundException e) {	
 			System.err.println("Le fichier n'existe pas !");
 		}

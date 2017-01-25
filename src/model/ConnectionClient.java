@@ -47,7 +47,7 @@ public class ConnectionClient implements Runnable {
 		  }
 		
 		else {
-			System.err.println("Vos informations sont incorrectes "); 
+			System.err.println("Vos informations de connexion sont incorrectes "); 
 		  }
 		
 	}		
