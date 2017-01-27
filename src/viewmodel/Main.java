@@ -31,9 +31,9 @@ public class Main {
 	System.out.println("Id :" + us1.getId_user());
 	
 	// CREATION D'UNE TACHE --- mettre condition sur priorité
-	Task test1 = new Task (id, name1, cont1, prop1, date1, st1, us1, us1);
+	Task test1 = new Task (id, name1, cont1, prop1, date1, st1, 0, 1);
 	
-	System.out.println("Id task :" + test1.getId_task() +" Name : " + test1.getName_task() +" Date : " + test1.getFinal_date_task() + " author : " + test1.getAuthor_task().getName_user());
+	System.out.println("Id task :" + test1.getId_task() +" Name : " + test1.getName_task() +" Date : " + test1.getFinal_date_task() + " author : " + test1.getId_author());
 
 	
 

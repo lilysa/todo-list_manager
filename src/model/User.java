@@ -55,7 +55,7 @@ public class User {
 	
 	//PRENDRE UNE TACHE
 	public void obtain_task (Task task) {
-		task.setAuthor_task(this);
+		task.setId_author(this.getId_user());
 		//modifier l'auteur dans le fichier
 	}
 	

@@ -10,12 +10,12 @@ public class Task {
 	private String final_date_task = null;
 	public enum state {à_faire, en_cours, fini };
 	private state state_task;
-	private User author_task = null;
-	private User actor_task = null;
+	private int id_author = 0;
+	private int id_actor = 0;
 	
 	
 	//constructor
-	public Task (int idt, String name, String content, int priority, String final_date, state state, User author, User actor) {
+	public Task (int idt, String name, String content, int priority, String final_date, state state, int author, int actor) {
 		
 		id_task = idt;
 		//id_user = idu;
@@ -24,8 +24,13 @@ public class Task {
 		priority_task = priority;
 		final_date_task = final_date;
 		state_task = state;
-		author_task = author;
-		actor_task = actor;
+		id_author = author;
+		id_actor = actor;
+		
+	}
+	
+	//constructor
+	public Task () {
 		
 	}
 	
@@ -87,20 +92,20 @@ public class Task {
 		this.state_task = state;
 	}
 	
-	public User getAuthor_task() {
-		return author_task;
+	public int getId_author() {
+		return id_author;
 	}
 	
-	public void setAuthor_task(User author) {
-		author_task = author;
+	public void setId_author(int author) {
+		id_author = author;
 	}
 	
-	public User getActor_task() {
-		return actor_task;
+	public int getId_actor() {
+		return id_actor;
 	}
 	
-	public void setActor_task(User actor) {
-		actor_task = actor;
+	public void setId_actor(int actor) {
+		id_actor = actor;
 	}
 	
 }
