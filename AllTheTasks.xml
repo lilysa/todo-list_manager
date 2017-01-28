@@ -1,1 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<AllTasks>
+<Task>
+	<IDTask>0</IDTask>
+	<NameTask>Jesuislenom</NameTask>
+	<ContentTask>Je suis le contenu</ContentTask>
+	<PriorityTask>5</PriorityTask>
+	<StateTask>fini</StateTask>
+	<AuthorTask>2</AuthorTask>
+	<ActorTask>2</ActorTask>
+</Task>
+<Task>
+	<IDTask>1</IDTask>
+	<NameTask>Jesuislenom1</NameTask>
+	<ContentTask>Je suis le contenu1</ContentTask>
+	<PriorityTask>5</PriorityTask>
+	<StateTask>fini</StateTask>
+	<AuthorTask>2</AuthorTask>
+	<ActorTask>2</ActorTask>
+</Task>
+<Task>
+</Task>
+</AllTasks><Task>
+	<IDTask>1</IDTask>
+	<NameTask>name1</NameTask>
+	<ContentTask>content1</ContentTask>
+	<PriorityTask>5</PriorityTask>
+	<StateTask>à_faire</StateTask>
+	<AuthorTask>0</AuthorTask>
+	<ActorTask>1</ActorTask>
+</Task>

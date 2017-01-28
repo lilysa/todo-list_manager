@@ -17,8 +17,10 @@ public class ParserTaskXML  extends DefaultHandler{
 	  private List<Task> listTaskDone = new ArrayList<Task>();
 	  private List<Task> listTaskWithoutActor = new ArrayList<Task>();
 	  private List<Task> listTaskHighPriority = new ArrayList<Task>();
+	  private List<Task> listAllTasks = new ArrayList<Task>();
 	  
 	  private Task task = null;
+	  private int nbTaskPrio = -1;
 	  private int convert = 0;
 	  private int idUser = 0;
 
@@ -51,9 +53,12 @@ public class ParserTaskXML  extends DefaultHandler{
 		  return listTaskHighPriority;
 	  }
 
+	  public List<Task> getListAllTasks() {
+		  return listAllTasks;
+	  }
 	  String balise = new String();
 	  Boolean debutBalise = true;
-
+	  int numTask = -1;
 	  
 	  
 	  /*
@@ -70,12 +75,32 @@ public class ParserTaskXML  extends DefaultHandler{
 		  balise = localName ;
 		  debutBalise = true;
 		  
-		  if (balise == "IDTask"){
+		  if (balise == "Task"){
+			  if (numTask != -1) {
+				  //exemple si on veut récupérer toutes les taches du user
+				  if(task.getId_author() == idUser) {
+					  listTaskSameUser.add(task);
+				  }
+				  if(task.getState_task().equals("en_cours")){
+					  listTaskInProgress.add(task);
+				  }
+				  if(task.getState_task().equals("à_faire")){
+					  listTaskToDo.add(task);
+				  }
+				  if(task.getState_task().equals("fini")){
+					  listTaskDone.add(task);
+				  }
+				  if (task.getId_actor() == 0){
+					  listTaskWithoutActor.add(task);
+				  }
+				  if (task.getPriority_task() == 5){
+					  listTaskHighPriority.add(task);
+				  }
+			  }
 			  task = new Task();
+			  numTask++;
 		  }
-		  
-
-		  	 
+		   
 	  }
 
 	  /*
@@ -87,30 +112,6 @@ public class ParserTaskXML  extends DefaultHandler{
 	  @Override
 	  public void endElement(String uri, String localName, String qName) throws SAXException {
 		  debutBalise = false;
-		  	  
-		  if(balise == "IDTask") {
-			  //exemple si on veut récupérer toutes les taches du user
-			  if(task.getId_author() == idUser) {
-				  listTaskSameUser.add(task);
-			  }
-			  if(task.getState_task().equals("en_cours")){
-				  listTaskInProgress.add(task);
-			  }
-			  if(task.getState_task().equals("à_faire")){
-				  listTaskToDo.add(task);
-			  }
-			  if(task.getState_task().equals("fini")){
-				  listTaskDone.add(task);
-			  }
-			  if (task.getId_actor() == 0){
-				  listTaskWithoutActor.add(task);
-			  }
-			  if (task.getPriority_task() == 5){
-				  listTaskHighPriority.add(task);
-			  }
-		  }
-		  
-		  
 	  }
 
 	  /*
@@ -121,7 +122,6 @@ public class ParserTaskXML  extends DefaultHandler{
 	  @Override
 	  public void characters(char[] ch, int start, int length) throws SAXException {
 		  String contenu = new String (ch, start, length);
-
 		  if ((balise == "IDTask") && (debutBalise == true)) {
 			  convert = Integer.parseInt(contenu);
 			  task.setId_task(convert);
