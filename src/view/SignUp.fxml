@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" minHeight="350.0" minWidth="500.0" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="viewmodel.SignUpController" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" minHeight="350.0" minWidth="500.0" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.SignUpController">
    <children>
       <VBox alignment="CENTER" prefHeight="650.0" prefWidth="722.0">
          <children>
@@ -66,18 +66,18 @@
                   </TextField>
                </children>
             </GridPane>
-            <Button id="SignUpButton" fx:id="createAccount" alignment="CENTER" mnemonicParsing="false" prefHeight="64.0" prefWidth="258.0" style="-fx-background-color: #aaee9b; -fx-border-color: #344747;" text="Créer un compte">
+            <Button fx:id="createAccount" alignment="CENTER" mnemonicParsing="false" prefHeight="64.0" prefWidth="258.0" style="-fx-background-color: #aaee9b; -fx-border-color: #344747;" text="Créer un compte">
                <font>
                   <Font name="Yu Gothic Regular" size="28.0" />
                </font>
             </Button>
             <Hyperlink fx:id="home" text="Retour à l'accueil">
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
                <font>
                   <Font name="Yu Gothic Regular" size="15.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
             </Hyperlink>
          </children>
       </VBox>
