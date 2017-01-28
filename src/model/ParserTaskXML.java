@@ -8,10 +8,16 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 
-public class ParserXML  extends DefaultHandler{
+public class ParserTaskXML  extends DefaultHandler{
 	
 
-	  private List<Task>   listTaskSameUser = new ArrayList<Task>();
+	  private List<Task> listTaskSameUser = new ArrayList<Task>();
+	  private List<Task> listTaskToDo = new ArrayList<Task>();
+	  private List<Task> listTaskInProgress = new ArrayList<Task>();
+	  private List<Task> listTaskDone = new ArrayList<Task>();
+	  private List<Task> listTaskWithoutActor = new ArrayList<Task>();
+	  private List<Task> listTaskHighPriority = new ArrayList<Task>();
+	  
 	  private Task task = null;
 	  private int convert = 0;
 	  private int idUser = 0;
@@ -23,6 +29,26 @@ public class ParserXML  extends DefaultHandler{
 	   */
 	  public List<Task> getListTaskSameUser() {
 	    return listTaskSameUser;
+	  }
+	  
+	  public List<Task> getListTaskToDo() {
+		  return listTaskToDo;
+	  }
+	  
+	  public List<Task> getListTaskInProgress() {
+		  return listTaskInProgress;
+	  }
+	  
+	  public List<Task> getListTaskDone() {
+		  return listTaskDone;
+	  }
+	  
+	  public List<Task> getListTaskWithoutActor(){
+		  return listTaskWithoutActor;
+	  }
+	  
+	  public List<Task> getListTaskHighPriority () {
+		  return listTaskHighPriority;
 	  }
 
 	  String balise = new String();
@@ -67,7 +93,24 @@ public class ParserXML  extends DefaultHandler{
 			  if(task.getId_author() == idUser) {
 				  listTaskSameUser.add(task);
 			  }
+			  if(task.getState_task().equals("en_cours")){
+				  listTaskInProgress.add(task);
+			  }
+			  if(task.getState_task().equals("à_faire")){
+				  listTaskToDo.add(task);
+			  }
+			  if(task.getState_task().equals("fini")){
+				  listTaskDone.add(task);
+			  }
+			  if (task.getId_actor() == 0){
+				  listTaskWithoutActor.add(task);
+			  }
+			  if (task.getPriority_task() == 5){
+				  listTaskHighPriority.add(task);
+			  }
 		  }
+		  
+		  
 	  }
 
 	  /*
@@ -97,9 +140,9 @@ public class ParserXML  extends DefaultHandler{
 			  task.setPriority_task(convert);
 		  }
 		  
-		  /**if ((balise == "StateTask") && (debutBalise == true)) {
+		  if ((balise == "StateTask") && (debutBalise == true)) {
 			  task.setState_task(contenu);
-		  }*/
+		  }
 		  
 		  if ((balise == "AuthorTask") && (debutBalise == true)) {
 			  convert = Integer.parseInt(contenu);

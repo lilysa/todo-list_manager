@@ -8,14 +8,15 @@ public class Task {
 	private String content_task = null;
 	private int priority_task = 0 ;
 	private String final_date_task = null;
-	public enum state {à_faire, en_cours, fini };
-	private state state_task;
+	//public enum state {à_faire, en_cours, fini };
+	//private state state_task;
+	private String state_task = null;
 	private int id_author = 0;
 	private int id_actor = 0;
 	
 	
 	//constructor
-	public Task (int idt, String name, String content, int priority, String final_date, state state, int author, int actor) {
+	public Task (int idt, String name, String content, int priority, String final_date, String state, int author, int actor) {
 		
 		id_task = idt;
 		//id_user = idu;
@@ -84,11 +85,11 @@ public class Task {
 		this.final_date_task = date;
 	}
 	
-	public state getState_task() {
+	public String getState_task() {
 		return this.state_task;
 	}
 	
-	public void setState_task(state state){
+	public void setState_task(String state){
 		this.state_task = state;
 	}
 	

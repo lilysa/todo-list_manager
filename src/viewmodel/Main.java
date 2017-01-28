@@ -1,11 +1,15 @@
 package viewmodel;
 
+import java.io.*;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import model.Task;
-import model.Task.state;
 import model.User;
 
 public class Main {
@@ -21,7 +25,7 @@ public class Main {
 	int prop1 = 5;
 	DateFormat format1 = new SimpleDateFormat("01/11/16");
 	String date1 = (format1.format(new Date()));
-	state st1 = state.à_faire;
+	String st1 = "à_faire";
 	
 	String nameU1 = "Titi";
 	String pswU1 = "toto";
@@ -36,6 +40,21 @@ public class Main {
 	System.out.println("Id task :" + test1.getId_task() +" Name : " + test1.getName_task() +" Date : " + test1.getFinal_date_task() + " author : " + test1.getId_author());
 
 	
+	//ECRITURE DANS UN FICHIER
+	//Path pathFileTask = Paths.get("AllTheTasks.xml");
+    BufferedWriter XMLWriterAllTheTasks;
+    OutputStreamWriter XMLOSWriter;
+    String BeginFile = "toto"; //Files.newOutputStream(pathFileTask)
+	try { 
+		XMLOSWriter = new OutputStreamWriter(new FileOutputStream("AllTheTasks.xml",true), "UTF-8");
+		XMLWriterAllTheTasks = new BufferedWriter(XMLOSWriter);
+		XMLWriterAllTheTasks.write(BeginFile);
+		XMLWriterAllTheTasks.flush();
+		XMLWriterAllTheTasks.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
 	
 	
