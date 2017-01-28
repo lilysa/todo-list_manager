@@ -36,6 +36,19 @@ public class AuthentificationController implements Initializable {
          this.prevStage = stage;
     }
 	
+    public void changeView(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Connect");
+        Pane myPane = null;
+        myPane = FXMLLoader.load(getClass().getResource("../view/Connect.fxml"));
+        Scene scene = new Scene(myPane);
+        stage.setScene(scene);
+
+        prevStage.close();
+
+        stage.show();
+     }
+    
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
 		 connectButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -43,21 +56,12 @@ public class AuthentificationController implements Initializable {
 	            @Override
 	            public void handle(ActionEvent event) {
 	                System.out.println("That was easy, wasn't it?");
-	                Stage stage = new Stage();
-	                stage.setTitle("Shop Management");
-	                Pane myPane = null;
 	                try {
-						myPane = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+						changeView(event);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-	                Scene scene = new Scene(myPane);
-	                stage.setScene(scene);
-
-	                prevStage.close();
-
-	                stage.show();
 	            }
 	        });
 
