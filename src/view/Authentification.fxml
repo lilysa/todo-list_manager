@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="viewmodel.AuthentificationController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.AuthentificationController">
    <children>
       <HBox alignment="CENTER" layoutX="462.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="158.0" prefWidth="310.0" AnchorPane.leftAnchor="395.0" AnchorPane.rightAnchor="395.0" AnchorPane.topAnchor="68.0">
          <children>
@@ -44,24 +44,24 @@
                   <Font name="Yu Gothic Regular" size="28.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1">
+            <TextField fx:id="login" GridPane.columnIndex="1">
                <font>
                   <Font name="Yu Gothic Regular" size="28.0" />
                </font>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic Regular" size="28.0" />
                </font>
             </TextField>
          </children>
       </GridPane>
-      <Button alignment="CENTER" layoutX="438.0" layoutY="462.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="222.0" text="Se connecter" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="462.0">
+      <Button fx:id="connectButton" alignment="CENTER" layoutX="438.0" layoutY="462.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="222.0" text="Se connecter" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="462.0">
          <font>
             <Font name="Yu Gothic Regular" size="28.0" />
          </font>
       </Button>
-      <Hyperlink layoutX="408.0" layoutY="556.0" text="Créer un compte" textAlignment="CENTER" AnchorPane.leftAnchor="450.0">
+      <Hyperlink fx:id="signUpLink" layoutX="408.0" layoutY="556.0" text="Créer un compte" textAlignment="CENTER" AnchorPane.leftAnchor="450.0">
          <font>
             <Font name="Yu Gothic Regular" size="24.0" />
          </font>
