@@ -30,14 +30,14 @@ public class ConnectionClient implements Runnable {
 		
 		while(!connect ){
 		
-		System.out.println(in.readLine());
-		login = sc.nextLine();
-		out.println(login);
+		System.out.println(in.readLine()); //lit message du serveur
+		login = sc.nextLine(); //lit entrée au clavier
+		out.println(login); //envoie login au serveur
 		out.flush();
 		
-		System.out.println(in.readLine());
-		pass = sc.nextLine();
-		out.println(pass);
+		System.out.println(in.readLine()); //lit message du serveur
+		pass = sc.nextLine(); //lit entrée au clavier
+		out.println(pass); //envoie mdp serveur
 		out.flush();
 		
 		if(in.readLine().equals("connecte")){
