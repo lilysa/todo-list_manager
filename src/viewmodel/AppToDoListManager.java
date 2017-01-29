@@ -23,7 +23,7 @@ public class AppToDoListManager extends Application {
     public static String TaskManagementFile = "../view/TaskManagement.fxml";
     
     //private static Task currentTask = new Task(0, "app", "todolist", 0, "25/02/2017", "finie", new User(1, "Rex", "toutou"), new User(2, "stich", "lilo"));
-    public static Task test = new Task(0, "app2", "totodolsit", 2, "01/05/2017", "prete", new User(3, "Kirikou", "secret"), new User(4, "Sorciere", "clochette"));
+    //public static Task test = new Task(0, "app2", "totodolsit", 2, "01/05/2017", "prete", new User(3, "Kirikou", "secret"), new User(4, "Sorciere", "clochette"));
     private static User currentUser = new User(9, "Dr. Acula", "Vlad");
     private static Task currentTask = null;
 	public static User getCurrentUser() {

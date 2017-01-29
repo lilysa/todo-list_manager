@@ -1,6 +1,9 @@
 package model;
 
-import model.Task;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class User {
 
@@ -13,6 +16,10 @@ public class User {
 		id_user = id;
 		name_user = name;
 		psw_user = psw;
+		
+	}
+	//autre constructeur
+	public User() {
 		
 	}
 	
@@ -45,6 +52,18 @@ public class User {
 	//AJOUTER UNE TACHE
 	public void create_task (Task task) {
 		//on écrit dans le fichier
+	    BufferedWriter XMLWriterAllTheTasks;
+	    OutputStreamWriter XMLOSWriter;
+		try { 
+			XMLOSWriter = new OutputStreamWriter(new FileOutputStream("AllTheTasks.xml",true), "UTF-8");
+			XMLWriterAllTheTasks = new BufferedWriter(XMLOSWriter);
+			XMLWriterAllTheTasks.write("\n<Task>\n\t<IDTask>" +task.getId_task()+"</IDTask>\n\t<NameTask>"+task.getName_task()+"</NameTask>\n\t<ContentTask>"+task.getContent_task()+"</ContentTask>\n\t<PriorityTask>"+task.getPriority_task()+"</PriorityTask>\n\t<StateTask>"+task.getState_task()+"</StateTask>\n\t<AuthorTask>"+task.getId_author()+"</AuthorTask>\n\t<ActorTask>"+task.getId_actor()+"</ActorTask>\n</Task>");
+			XMLWriterAllTheTasks.flush();
+			XMLWriterAllTheTasks.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	//SUPPRIMER UNE TACHE
@@ -54,7 +73,7 @@ public class User {
 	
 	//PRENDRE UNE TACHE
 	public void obtain_task (Task task) {
-		task.setAuthor_task(this);
+		task.setId_author(this.getId_user());
 		//modifier l'auteur dans le fichier
 	}
 	
@@ -68,8 +87,8 @@ public class User {
 	
 	//FINIR UNE TACHE
 	public void finish_task(Task task) {
-		if (!task.getState_task().equals("finie")) {
-			task.setState_task("finie");
+		if (!task.getState_task().equals("fini")) {
+			task.setState_task("fini");
 			//modifier l'état dans le fichier
 		}
 	}
