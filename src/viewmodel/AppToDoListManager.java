@@ -5,6 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.ScreensController;
+import model.Task;
+import model.User;
 
 public class AppToDoListManager extends Application {
 	
@@ -19,6 +21,25 @@ public class AppToDoListManager extends Application {
     
     public static String takManagementID = "TaskManagement";
     public static String TaskManagementFile = "../view/TaskManagement.fxml";
+    
+    private static Task currentTask = new Task(0, "app", "todolist", 0, "25/02/2017", "finie", new User(1, "Rex", "toutou"), new User(2, "stich", "lilo"));
+    public static Task test = new Task(0, "app2", "totodolsit", 2, "01/05/2017", "prete", new User(3, "Kirikou", "secret"), new User(4, "Sorciere", "clochette"));
+    
+
+	public static void setCurrentTask(Task t){
+		AppToDoListManager.currentTask.setActor_task(t.getActor_task());
+    	AppToDoListManager.currentTask.setAuthor_task(t.getAuthor_task());
+    	AppToDoListManager.currentTask.setContent_task(t.getContent_task());
+    	AppToDoListManager.currentTask.setFinal_date_task(t.getFinal_date_task());
+    	AppToDoListManager.currentTask.setId_task(t.getId_task());
+    	AppToDoListManager.currentTask.setName_task(t.getName_task());
+    	AppToDoListManager.currentTask.setPriority_task(t.getPriority_task());
+    	AppToDoListManager.currentTask.setState_task(t.getState_task());
+    }
+    
+    public static Task getCurrentTask(){
+    	return currentTask;
+    }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,30 +50,6 @@ public class AppToDoListManager extends Application {
 	public void start(Stage primaryStage){
 		// TODO Auto-generated method stub
 		
-		try{
-			/*Parent root = FXMLLoader.load(getClass().getResource("../view/Authentification.fxml"));
-			Scene scene = new Scene(root);
-			stage.setTitle("Connexion");
-			stage.setScene(scene);
-			stage.show();*/
-			
-			/*FXMLLoader myLoader = new FXMLLoader(getClass().getResource("../view/Authentification.fxml"));
-
-			Pane myPane = (Pane)myLoader.load();
-
-			AuthentificationController controller = (AuthentificationController) myLoader.getController();
-			controller.setPrevStage(stage);
-			
-			SignUpController controllerSU = (SignUpController) myLoader.getController();
-			controllerSU.setPreviousStage(stage);
-
-		   Scene myScene = new Scene(myPane);        
-		   stage.setScene(myScene);
-		   stage.show();*/
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 
 		ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(AppToDoListManager.authentificationID, AppToDoListManager.AuthentificationFile);

@@ -1,7 +1,6 @@
 package model;
 
 import model.Task;
-import model.Task.state;
 
 public class User {
 
@@ -61,16 +60,16 @@ public class User {
 	
 	//COMMENCER UNE TACHE
 	public void begin_task (Task task) {
-		if (task.getState_task() != state.en_cours) {
-			task.setState_task(state.en_cours);
+		if (!task.getState_task().equals("en_cours")) {
+			task.setState_task("en_cours");
 			//modifier l'état dans le fichier
 		}	
 	}
 	
 	//FINIR UNE TACHE
 	public void finish_task(Task task) {
-		if (task.getState_task() != state.fini) {
-			task.setState_task(state.fini);
+		if (!task.getState_task().equals("finie")) {
+			task.setState_task("finie");
 			//modifier l'état dans le fichier
 		}
 	}

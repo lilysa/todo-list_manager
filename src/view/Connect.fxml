@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="viewmodel.ConnectController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.ConnectController">
    <children>
       <SplitPane layoutX="112.0" layoutY="-8.0" prefHeight="650.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -201,7 +201,7 @@
                      </VBox.margin>
                   </Text>
                   <Separator prefWidth="200.0" style="-fx-background-color: #344747;" />
-                  <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="168.0" style="-fx-background-color: #aaee9b; -fx-border-color: #344747;" text="Créer une tâche">
+                  <Button fx:id="createTask" mnemonicParsing="false" prefHeight="59.0" prefWidth="168.0" style="-fx-background-color: #aaee9b; -fx-border-color: #344747;" text="Créer une tâche">
                      <font>
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>
@@ -226,7 +226,7 @@
                         <Insets top="200.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par date de fin">
+                  <Button fx:id="sortByEndDate" mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par date de fin">
                      <font>
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>
@@ -234,7 +234,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par réalisateur">
+                  <Button fx:id="sortByDoer" mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par réalisateur">
                      <font>
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>
@@ -242,7 +242,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par priorité">
+                  <Button fx:id="sortByPriority" mnemonicParsing="false" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Trier par priorité">
                      <font>
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>

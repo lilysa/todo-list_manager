@@ -37,7 +37,7 @@ public class SignUpController implements Initializable, ControlledScreen {
 
 	            @Override
 	            public void handle(ActionEvent event) {
-	                System.out.println("That was easy, wasn't it?");
+	                
 	                myController.setScreen(AppToDoListManager.connectID);
 	            }
 	        });
@@ -46,7 +46,7 @@ public class SignUpController implements Initializable, ControlledScreen {
 
 	            @Override
 	            public void handle(ActionEvent event) {
-	                System.out.println("That was easy, wasn't it?");
+	                
 	                myController.setScreen(AppToDoListManager.authentificationID);
 	            }
 	        });

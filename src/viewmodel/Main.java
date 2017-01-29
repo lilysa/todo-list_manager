@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import model.Task;
-import model.Task.state;
 import model.User;
 
 public class Main {
@@ -21,7 +20,7 @@ public class Main {
 	int prop1 = 5;
 	DateFormat format1 = new SimpleDateFormat("01/11/16");
 	String date1 = (format1.format(new Date()));
-	state st1 = state.à_faire;
+	String st1 = "prete";
 	
 	String nameU1 = "Titi";
 	String pswU1 = "toto";
