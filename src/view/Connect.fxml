@@ -192,7 +192,7 @@
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                  <Text fx:id="todaysDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
                      <font>
                         <Font name="Yu Gothic Regular" size="18.0" />
                      </font>

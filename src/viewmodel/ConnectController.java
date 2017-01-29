@@ -1,6 +1,7 @@
 package viewmodel;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import model.ControlledScreen;
 import model.ScreensController;
 import model.Task;
@@ -27,19 +29,20 @@ public class ConnectController implements Initializable, ControlledScreen {
 	@FXML	Button sortByEndDate;
 	@FXML	Button sortByDoer;
 	@FXML	Button sortByPriority;
+	@FXML	Text todaysDate;
 	
 	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
+		 todaysDate.setText(LocalDate.now().toString());
 		 createTask.setOnAction(new EventHandler<ActionEvent>() {
-
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	/*Task t = new Task(0, "connectcon", "roller", 3, "01/02/2017", "en_cours", new User(1, "Jon Snow", "secret"), new User(2, "Peter Pan", "clochette"));
-	                AppToDoListManager.setCurrentTask(t);
-	                AppToDoListManager.test.setName_task("bouh");
-	                AppToDoListManager.test.setPriority_task(4);
-	                AppToDoListManager.setCurrentTask(t);*/
+	            	Task t = new Task(0, "connectcon", "roller", 2, "2017-02-23", "en_cours", new User(1, "Jon Snow", "secret"), new User(2, "Peter Pan", "clochette"));
+	                if(!(AppToDoListManager.getCurrentTask() !=null))
+	                		AppToDoListManager.setCurrentTask(t);
+	            	
+	            	myController.loadScreen(AppToDoListManager.takManagementID, AppToDoListManager.TaskManagementFile);
 	                myController.setScreen(AppToDoListManager.takManagementID);
 	            }
 	        });

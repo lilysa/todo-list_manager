@@ -1,22 +1,18 @@
 package viewmodel;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import model.ControlledScreen;
 import model.ScreensController;
+import model.User;
 
 public class AuthentificationController implements Initializable, 	ControlledScreen {
 
@@ -32,39 +28,24 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 	@FXML
 	private Hyperlink signUpLink;
 	
-	Stage prevStage;
 	ScreensController myController; 
 
-    public void setPrevStage(Stage stage){
-         this.prevStage = stage;
-    }
-	
-    public void changeView(ActionEvent event, String nextView) throws IOException {
-        Stage stage = new Stage();
-        stage.setTitle("Connect");
-        Pane myPane = null;
-        myPane = FXMLLoader.load(getClass().getResource(nextView));
-        Scene scene = new Scene(myPane);
-        stage.setScene(scene);
 
-        prevStage.close();
-
-        stage.show();
-     }
-    
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
+		 
 		 connectButton.setOnAction(new EventHandler<ActionEvent>() {
-
 	            @Override
 	            public void handle(ActionEvent event) {
 	                System.out.println("That was easy, wasn't it?");
-	                myController.setScreen(AppToDoListManager.connectID);
+	                //si l'user et mdp sont corrects
+	                	AppToDoListManager.setCurrentUser(new User(5, login.getText(), password.getText()));
+	                	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+	                	myController.setScreen(AppToDoListManager.connectID);
 	            }
 	        });
 
 		 signUpLink.setOnAction(new EventHandler<ActionEvent>() {
-
 	            @Override
 	            public void handle(ActionEvent event) {
 	                System.out.println("That was easy, wasn't it?");
