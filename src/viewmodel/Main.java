@@ -10,11 +10,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.jdom2.*;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import model.ParserTaskXML;
 import model.Task;
@@ -22,11 +31,14 @@ import model.User;
 
 public class Main {
 
+	static org.jdom2.Document document;
+	   static org.jdom2.Element racine;
+	
 	public static void main(String[] args) {
 
 
 	//INITIALISATION DES VARIABLES UTILES POUR LA CREATION D'UN USER ET D'UNE TACHE
-	int id = 1;
+	int id = 2;
 	int idu = 0;
 	String name1 = "name1";
 	String cont1 = "content1";
@@ -47,9 +59,48 @@ public class Main {
 	
 	System.out.println("Id task :" + test1.getId_task() +" Name : " + test1.getName_task() +" Date : " + test1.getFinal_date_task() + " author : " + test1.getId_author());
 
+	try {
+		//us1.begin_task("test.xml",test1);
+		//us1.finish_task("test.xml", test1);
+		//us1.obtain_task("test.xml", test1);
+		//us1.supress_task("test.xml", test1);
+		us1.change_task("test.xml", test1);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
-	//ECRITURE DANS UN FICHIER
-/**	//Path pathFileTask = Paths.get("AllTheTasks.xml");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/**	//ECRITURE DANS UN FICHIER
+	//Path pathFileTask = Paths.get("AllTheTasks.xml");
     BufferedWriter XMLWriterAllTheTasks;
     OutputStreamWriter XMLOSWriter;
     String BeginFile = "toto"; //Files.newOutputStream(pathFileTask)
@@ -70,7 +121,7 @@ public class Main {
 	List<Task> toto = new ArrayList<Task>();
 	toto.add(test1);
 	System.out.println(toto.get(0).getName_task());
-	*/
+	
 	try {
 		List<Task> test = readTasks(new FileInputStream("AllTheTasks.xml"));
 		System.out.println(test.get(0).getName_task() + test.get(1).getName_task());
@@ -78,15 +129,23 @@ public class Main {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	*/
 	
+	//us1.create_task(test1);
+	/**try {
+		testDOM();
+	} catch (SAXException | ParserConfigurationException | IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}*/
 	
-	us1.create_task(test1);
-	
-	
+
 	
 
 	}
 	
+	
+
 	
 	
 	//PARSER
@@ -105,4 +164,23 @@ public class Main {
 	}
 	
 	
-}
+
+
+	//ECRITURE AVEC DU DOM
+
+	/**public static void testDOM() throws SAXException, ParserConfigurationException, IOException {
+
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.parse(new FileInputStream ("test.xml"));
+		//doc.normalize();
+
+		Element id = doc.createElement("IDTask");
+		NodeList nodelist = doc.getElementsByTagName("Task"); //on récupère la liste des noeuds dans les balises AllTasks
+		int nbTasks = nodelist.getLength(); //on a ici le nombre de AllTasks
+		System.out.println("Il y a "+nbTasks+" Tasks");
+		
+		nodelist.item(nbTasks-1).appendChild(id);
+		
+}}*/
+}	
