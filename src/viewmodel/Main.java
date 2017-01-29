@@ -64,7 +64,7 @@ public class Main {
 		//us1.finish_task("test.xml", test1);
 		//us1.obtain_task("test.xml", test1);
 		//us1.supress_task("test.xml", test1);
-		us1.change_task("test.xml", test1);
+		//us1.change_task("test.xml", test1);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -73,55 +73,7 @@ public class Main {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-/**	//ECRITURE DANS UN FICHIER
-	//Path pathFileTask = Paths.get("AllTheTasks.xml");
-    BufferedWriter XMLWriterAllTheTasks;
-    OutputStreamWriter XMLOSWriter;
-    String BeginFile = "toto"; //Files.newOutputStream(pathFileTask)
-	try { 
-		XMLOSWriter = new OutputStreamWriter(new FileOutputStream("test.xml",true), "UTF-8");
-		XMLWriterAllTheTasks = new BufferedWriter(XMLOSWriter);
-		XMLWriterAllTheTasks.write(BeginFile);
-		XMLWriterAllTheTasks.flush();
-		XMLWriterAllTheTasks.write("\ntest");
-		XMLWriterAllTheTasks.flush();
-		XMLWriterAllTheTasks.close();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-
-	
-	List<Task> toto = new ArrayList<Task>();
-	toto.add(test1);
-	System.out.println(toto.get(0).getName_task());
-	
+/**		
 	try {
 		List<Task> test = readTasks(new FileInputStream("AllTheTasks.xml"));
 		System.out.println(test.get(0).getName_task() + test.get(1).getName_task());
@@ -131,21 +83,21 @@ public class Main {
 	}
 	*/
 	
-	//us1.create_task(test1);
-	/**try {
-		testDOM();
-	} catch (SAXException | ParserConfigurationException | IOException e) {
+	try {
+		us1.create_task("test.xml",test1);
+		us1.create_task("test.xml",test1);
+		us1.supress_task("test.xml", test1);
+		
+	} catch (JDOMException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
-	
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
-	
 
 	}
-	
-	
-
 	
 	
 	//PARSER
@@ -164,23 +116,4 @@ public class Main {
 	}
 	
 	
-
-
-	//ECRITURE AVEC DU DOM
-
-	/**public static void testDOM() throws SAXException, ParserConfigurationException, IOException {
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(new FileInputStream ("test.xml"));
-		//doc.normalize();
-
-		Element id = doc.createElement("IDTask");
-		NodeList nodelist = doc.getElementsByTagName("Task"); //on récupère la liste des noeuds dans les balises AllTasks
-		int nbTasks = nodelist.getLength(); //on a ici le nombre de AllTasks
-		System.out.println("Il y a "+nbTasks+" Tasks");
-		
-		nodelist.item(nbTasks-1).appendChild(id);
-		
-}}*/
 }	
