@@ -54,16 +54,15 @@ public class Task {
 		 */
 		public Task (String fullTask) {
 			
-			String[] partTask = fullTask.split("_");
-			Task t = new Task();
-			t.setId_task(Integer.parseInt(partTask[0]));
-			t.setName_task(partTask[1]);
-			t.setContent_task(partTask[2]);
-			t.setPriority_task(Integer.parseInt(partTask[3]));
-			t.setFinal_date_task(partTask[4]);
-			t.setState_task(partTask[5]);
-			t.setId_author(Integer.parseInt(partTask[6]));
-			t.setId_actor(Integer.parseInt(partTask[7]));
+			String[] partTask = fullTask.split("_");	
+			id_task = Integer.parseInt(partTask[0]);
+			name_task = partTask[1];
+			content_task = partTask[2];
+			priority_task = Integer.parseInt(partTask[3]);
+			final_date_task = partTask[4];
+			state_task = partTask[5];
+			id_author = Integer.parseInt(partTask[6]);
+			id_actor = Integer.parseInt(partTask[7]);
 		}
 		
 		@Override

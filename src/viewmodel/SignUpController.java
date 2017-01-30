@@ -52,7 +52,6 @@ public class SignUpController implements Initializable, ControlledScreen {
 						}else{
 							userName.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
 						}
-	                	//myController.setScreen(AppToDoListManager.connectID);
 	                }
 	            }
 	        });
