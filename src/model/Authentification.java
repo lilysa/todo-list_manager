@@ -112,6 +112,7 @@ public class Authentification implements Runnable {
 		Iterator<Element> i = listUser.iterator();
 		int nbNode = listUser.size();
 		int j = 0;
+		
 		while(i.hasNext() == true){
 			   Element courant = (Element)i.next();
 			   j++;
@@ -121,6 +122,7 @@ public class Authentification implements Runnable {
 					   if(courant.getChild("PswUser").getTextTrim().equals(pass)){
 						   return true;
 					   }
+
 				   }
 			   }
 		}

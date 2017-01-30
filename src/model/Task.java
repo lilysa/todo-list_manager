@@ -54,7 +54,8 @@ public class Task {
 		 */
 		public Task (String fullTask) {
 			
-			String[] partTask = fullTask.split("_");	
+
+			String[] partTask = fullTask.split("_");
 			id_task = Integer.parseInt(partTask[0]);
 			name_task = partTask[1];
 			content_task = partTask[2];

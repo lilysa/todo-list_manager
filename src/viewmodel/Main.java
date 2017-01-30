@@ -28,6 +28,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import model.Authentification;
+import model.JDOMLectureTasks;
 import model.ParserTaskXML;
 import model.Task;
 import model.User;
@@ -39,7 +40,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-
+/*
 
 	//INITIALISATION DES VARIABLES UTILES POUR LA CREATION D'UN USER ET D'UNE TACHE
 	int id = 2;
@@ -88,9 +89,9 @@ public class Main {
 	
 	
 	try {
-		us1.create_task("test.xml",test1);
-		us1.create_task("test.xml",test1);
-		us1.supress_task("test.xml", test1);
+		us1.create_task(test1);
+		us1.create_task(test1);
+		us1.supress_task(test1);
 		
 	} catch (JDOMException e) {
 		// TODO Auto-generated catch block
@@ -100,7 +101,18 @@ public class Main {
 		e.printStackTrace();
 	}
 
-
+*/
+	
+		try {
+			List<Task> Test = JDOMLectureTasks.recupToDoTasks();
+			System.out.println(Test.get(0).getName_task());
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 }
 	
