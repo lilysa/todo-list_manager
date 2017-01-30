@@ -37,7 +37,7 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 		 connectButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	                System.out.println("That was easy, wasn't it?");
+	            	
 	                //si l'user et mdp sont corrects
 	                	AppToDoListManager.setCurrentUser(new User(5, login.getText(), password.getText()));
 	                	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);

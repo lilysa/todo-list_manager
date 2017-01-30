@@ -35,6 +35,31 @@ public class Task {
 		
 	}
 	
+	//constructor
+	
+		/**
+		 * @param fullTask doit être de la forme taskId*taskName*taskContent*priority*date*state*idAuthor*idActor
+		 */
+		public Task (String fullTask) {
+			
+			String[] partTask = fullTask.split("*");
+			Task t = new Task();
+			t.setId_task(Integer.parseInt(partTask[0]));
+			t.setName_task(partTask[1]);
+			t.setContent_task(partTask[2]);
+			t.setPriority_task(Integer.parseInt(partTask[3]));
+			t.setFinal_date_task(partTask[4]);
+			t.setState_task(partTask[5]);
+			t.setId_author(Integer.parseInt(partTask[6]));
+			t.setId_actor(Integer.parseInt(partTask[7]));
+		}
+		
+		@Override
+		public String toString() {
+			return id_task + "*" + name_task + "*" + content_task + "*" + priority_task + "*" + final_date_task + "*"
+					+ state_task + "*" + id_author + "*" + id_actor;
+		}
+	
 
 	public int getId_task() {
 		return this.id_task;
@@ -108,5 +133,6 @@ public class Task {
 	public void setId_actor(int actor) {
 		id_actor = actor;
 	}
+	
 	
 }
