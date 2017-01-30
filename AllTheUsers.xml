@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AllTheUsers>
   <User>
-    <IDUser />
-    <NameUser />
-    <PswUser />
-  </User>
-  <User>
-    <IDUser>2</IDUser>
+    <IDUser>1</IDUser>
     <NameUser>nom</NameUser>
     <PswUser>mdp</PswUser>
   </User>
   <User>
-    <IDUser>3</IDUser>
+    <IDUser>2</IDUser>
     <NameUser>elisa</NameUser>
     <PswUser>alcie</PswUser>
   </User>
   <User>
-    <IDUser>4</IDUser>
+    <IDUser>3</IDUser>
     <NameUser>alice</NameUser>
     <PswUser>elisa</PswUser>
   </User>

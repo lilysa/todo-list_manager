@@ -50,11 +50,11 @@ public class Task {
 	//constructor
 	
 		/**
-		 * @param fullTask doit être de la forme taskId*taskName*taskContent*priority*date*state*idAuthor*idActor
+		 * @param fullTask doit être de la forme taskId_taskName_taskContent_priority_date_state_idAuthor_idActor
 		 */
 		public Task (String fullTask) {
 			
-			String[] partTask = fullTask.split("*");
+			String[] partTask = fullTask.split("_");
 			Task t = new Task();
 			t.setId_task(Integer.parseInt(partTask[0]));
 			t.setName_task(partTask[1]);
@@ -68,8 +68,8 @@ public class Task {
 		
 		@Override
 		public String toString() {
-			return id_task + "*" + name_task + "*" + content_task + "*" + priority_task + "*" + final_date_task + "*"
-					+ state_task + "*" + id_author + "*" + id_actor;
+			return id_task + "_" + name_task + "_" + content_task + "_" + priority_task + "_" + final_date_task + "_"
+					+ state_task + "_" + id_author + "_" + id_actor;
 		}
 	
 
