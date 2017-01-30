@@ -1,5 +1,17 @@
 package model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
 public class Task {
 
 	private int id_task = 0;
@@ -108,5 +120,36 @@ public class Task {
 	public void setId_actor(int actor) {
 		id_actor = actor;
 	}
+	
+	
+	static org.jdom2.Document document;
+	static Element racine;
+	
+	
+	//PETITE FONCTION POUR RECUPERER LE NOM DE L'ACTEUR
+	public String getNameActor(int idActor) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	    document = sxb.build(new File("AllTheUsers.xml"));
+	    racine = document.getRootElement();
+		boolean search = true;
+
+		List listUsers = racine.getChildren("User");
+		Iterator i = listUsers.iterator();
+		
+		while((i.hasNext() == true) && (search == true)){
+			
+		    Element courant = (Element)i.next();
+			if(courant.getChild("IDUser").getTextTrim().equals(Integer.toString(idActor)) ){
+				search = false;
+				return courant.getChild("NameUser").getTextTrim();
+			}
+		}	
+		
+		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+       sortie.output(document, new FileOutputStream("AllTheUsers.xml"));
+       return "erreur";	
+	}
+	
+	
 	
 }

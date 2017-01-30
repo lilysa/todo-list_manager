@@ -39,10 +39,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		
-		
-		
-		
+
 
 	//INITIALISATION DES VARIABLES UTILES POUR LA CREATION D'UN USER ET D'UNE TACHE
 	int id = 2;
