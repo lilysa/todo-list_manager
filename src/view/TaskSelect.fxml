@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.TaskSelectController">
    <children>
       <GridPane layoutX="-9.0" layoutY="-7.0" prefHeight="200.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -58,32 +57,32 @@
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="198.0" text="Label" GridPane.columnIndex="1">
+            <Label fx:id="nameLabel" prefHeight="16.0" prefWidth="198.0" text="Label" GridPane.columnIndex="1">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="288.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="actorLabel" prefHeight="16.0" prefWidth="288.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="266.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="endDateLabel" prefHeight="16.0" prefWidth="266.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="222.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="contentLabel" prefHeight="16.0" prefWidth="222.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="399.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="priorityLabel" prefHeight="16.0" prefWidth="399.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="367.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="stateLabel" prefHeight="16.0" prefWidth="367.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Yu Gothic Regular" size="13.0" />
                </font>
@@ -93,7 +92,15 @@
                   <Insets bottom="5.0" right="5.0" />
                </GridPane.margin>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: #9bbeee; -fx-border-color: #344747;" text="Modifier">
+                  <Button fx:id="delete" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #eea9c5; -fx-border-color: #344747;" text="Supprimer">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="edit" mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: #9bbeee; -fx-border-color: #344747;" text="Modifier">
                      <font>
                         <Font name="Yu Gothic Regular" size="13.0" />
                      </font>

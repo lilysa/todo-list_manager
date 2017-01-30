@@ -43,11 +43,15 @@ public class Client {
 	
 
 	}
+	/**
+	 * @param msgToSend doit être de la forme action*login*mdp avec action = connection ou signUp
+	 */
 	
 	public static void sendConnectServer(String msgToSend){
 		out.println(msgToSend);
 		out.flush();
 	}
+	
 	
 	public static String readAnswerFromServer(){
 		try{

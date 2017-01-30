@@ -7,9 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import model.ControlledScreen;
 import model.ScreensController;
 import model.User;
@@ -42,6 +47,10 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 	                	AppToDoListManager.setCurrentUser(new User(5, login.getText(), password.getText()));
 	                	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
 	                	myController.setScreen(AppToDoListManager.connectID);
+	                	
+	                //sinon
+	                	//password.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
+	                	//login.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
 	            }
 	        });
 
