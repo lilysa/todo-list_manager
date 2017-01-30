@@ -76,11 +76,12 @@ public class ParserUserXML extends DefaultHandler{
 			  user.setName_user(contenu);
 		  }
 		  
-		  if ((balise == "Password") && (debutBalise == true)) {
+		  if ((balise == "PswUser") && (debutBalise == true)) {
 			  user.setPws_user(contenu);
 		  }
 		  
 
 	  }
+	  
 
 }

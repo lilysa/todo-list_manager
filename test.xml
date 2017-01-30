@@ -10,16 +10,7 @@
     <ActorTask>2</ActorTask>
   </Task>
   <TaskSuppr />
-  <Task>
-    <IDTask>2</IDTask>
-    <NameTask>name1</NameTask>
-    <ContentTask>content1</ContentTask>
-    <PriorityTask>5</PriorityTask>
-    <StateTask>à_faire</StateTask>
-    <AuthorTask>2</AuthorTask>
-    <ActorTask>1</ActorTask>
-    <DateTask>01/11/16</DateTask>
-  </Task>
+  <TaskSuppr />
   <Task>
     <IDTask>3</IDTask>
     <NameTask>Jesuislenom1</NameTask>
@@ -28,6 +19,26 @@
     <StateTask>fini</StateTask>
     <AuthorTask>2</AuthorTask>
     <ActorTask>2</ActorTask>
+  </Task>
+  <Task>
+    <IDTask>4</IDTask>
+    <NameTask>name1</NameTask>
+    <ContentTask>content1</ContentTask>
+    <PriorityTask>5</PriorityTask>
+    <StateTask>à_faire</StateTask>
+    <AuthorTask>0</AuthorTask>
+    <ActorTask>1</ActorTask>
+    <DateTask>01/11/16</DateTask>
+  </Task>
+  <Task>
+    <IDTask>5</IDTask>
+    <NameTask>name1</NameTask>
+    <ContentTask>content1</ContentTask>
+    <PriorityTask>5</PriorityTask>
+    <StateTask>à_faire</StateTask>
+    <AuthorTask>0</AuthorTask>
+    <ActorTask>1</ActorTask>
+    <DateTask>01/11/16</DateTask>
   </Task>
   <Task />
 </AllTasks>

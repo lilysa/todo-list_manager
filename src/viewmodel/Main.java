@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,11 +21,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.jdom2.*;
+//import org.jdom2.Element;
+import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import model.Authentification;
 import model.ParserTaskXML;
 import model.Task;
 import model.User;
@@ -36,6 +39,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 
+		
+		
+		
+		
 
 	//INITIALISATION DES VARIABLES UTILES POUR LA CREATION D'UN USER ET D'UNE TACHE
 	int id = 2;
@@ -73,7 +80,7 @@ public class Main {
 	
 	
 	
-/**		
+	
 	try {
 		List<Task> test = readTasks(new FileInputStream("AllTheTasks.xml"));
 		System.out.println(test.get(0).getName_task() + test.get(1).getName_task());
@@ -81,7 +88,7 @@ public class Main {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	*/
+	
 	
 	try {
 		us1.create_task("test.xml",test1);
@@ -97,9 +104,12 @@ public class Main {
 	}
 
 
-	}
+		
+}
 	
 	
+
+
 	//PARSER
 	public static List<Task> readTasks(FileInputStream in) throws ParserConfigurationException, SAXException, IOException {
 		

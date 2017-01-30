@@ -65,9 +65,7 @@ public class User {
 		SAXBuilder sxb = new SAXBuilder();
 	    document = sxb.build(new File(file));
 	    racine = document.getRootElement();
-	    //boolean search = true;
-		List listTask = racine.getChildren("Task");
-		//Iterator i = listTask.iterator();
+	    List<Element> listTask = racine.getChildren("Task");
 		int nbNode = listTask.size();
 		Element newTask = (Element) listTask.get(nbNode-1); //on se place au bon endroit
 		
