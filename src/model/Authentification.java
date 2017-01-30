@@ -122,7 +122,6 @@ public class Authentification implements Runnable {
 					   if(courant.getChild("PswUser").getTextTrim().equals(pass)){
 						   return true;
 					   }
-
 				   }
 			   }
 		}
