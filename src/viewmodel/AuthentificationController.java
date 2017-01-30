@@ -7,18 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
-import model.Client;
 import model.ControlledScreen;
 import model.ScreensController;
-import model.User;
 
 public class AuthentificationController implements Initializable, 	ControlledScreen {
 
@@ -43,8 +36,8 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 		 connectButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	String identifiers = login.getText() + password.getText();
-	            	AppToDoListManager.getClient();
+	            	String identifiers = login.getText() + "*" +password.getText();
+	            	/*AppToDoListManager.getClient();
 					Client.sendConnectServer(identifiers);
 	            	AppToDoListManager.getClient();
 					String response = Client.readAnswerFromServer();
@@ -56,7 +49,7 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 	            	}else{
 	            		password.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
 	                	login.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
-	            	}
+	            	}*/
 	            }
 	        });
 

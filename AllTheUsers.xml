@@ -10,5 +10,15 @@
     <NameUser>nom</NameUser>
     <PswUser>mdp</PswUser>
   </User>
+  <User>
+    <IDUser>3</IDUser>
+    <NameUser>elisa</NameUser>
+    <PswUser>alcie</PswUser>
+  </User>
+  <User>
+    <IDUser>4</IDUser>
+    <NameUser>alice</NameUser>
+    <PswUser>elisa</PswUser>
+  </User>
   <User />
 </AllTheUsers>

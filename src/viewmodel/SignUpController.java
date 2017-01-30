@@ -38,15 +38,24 @@ public class SignUpController implements Initializable, ControlledScreen {
     
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
+		 
 		 createAccount.setOnAction(new EventHandler<ActionEvent>() {
-
 	            @Override
 	            public void handle(ActionEvent event) {
 	                if(!password.getText().equals(confirmPassword.getText())){
 	                	confirmPassword.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
 	                	//aussi : check si user existe déjà dans fichier
 	                }else{
-	                	myController.setScreen(AppToDoListManager.connectID);
+	                	String identifiers = userName.getText() + "_" + password.getText();
+	                	AppToDoListManager.sendConnectServer("signUp" + "_" + identifiers);
+						String response = AppToDoListManager.readAnswerFromServer();
+						String[] splitResponse = response.split("_");
+						if(splitResponse[0].equals("true")){
+							myController.setScreen(AppToDoListManager.authentificationID);
+						}else{
+							userName.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));;
+						}
+	                	//myController.setScreen(AppToDoListManager.connectID);
 	                }
 	            }
 	        });

@@ -38,7 +38,8 @@ public class Authentification implements Runnable {
 		while(!authentifier){
 			
 			reception = in.readLine(); //On récupère une ligne de forme : "action*login*pass"
-			String part[] = reception.split("*");
+			System.out.println(reception);
+			String[] part = reception.split("_");
 			action = part[0];
 			login = part[1];
 			pass = part[2];
@@ -48,7 +49,7 @@ public class Authentification implements Runnable {
 				try {
 				if(isValid(login, pass)){
 					send = getNameAndIDUser(login);
-					send = "true*"+send;
+					send = "true_"+send;
 					out.println(send);
 					out.flush();
 					authentifier = true;	
@@ -70,7 +71,7 @@ public class Authentification implements Runnable {
 				try {
 				if(isANewUser(login, pass)){
 					send = getNameAndIDUser(login);
-					send = "true*"+send;
+					send = "true_"+send;
 					out.println(send);
 					out.flush();
 					authentifier = true;	
@@ -131,16 +132,19 @@ public class Authentification implements Runnable {
 	    List listUsers = racine.getChildren("User");
 	    Iterator i = listUsers.iterator();
 	    int nbNode = listUsers.size();
-	    
+	    int j = 0;
 	    boolean nameAlreadyUsed = false;
 	    String name = new String();
 	    
 	    while((i.hasNext() == true) && (nameAlreadyUsed == false)){
 			   Element courant = (Element)i.next();
-			   
-			   if(courant.getChild("NameUser").getTextTrim().equals(login)){
-				   nameAlreadyUsed = true;
-				   return false;
+			   j++;
+			   if(j < nbNode){
+				   System.out.println(courant.getChild("NameUser").getTextTrim());
+				   if(courant.getChild("NameUser").getTextTrim().equals(login)){
+					   nameAlreadyUsed = true;
+					   return false;
+				   }
 			   }
 		 }
 	    
@@ -187,7 +191,7 @@ public class Authentification implements Runnable {
 			
 		    Element courant = (Element)i.next();
 			if(courant.getChild("NameUser").getTextTrim().equals(login) ){
-				idANDname = login+"*"+courant.getChild("IDUser").getTextTrim();
+				idANDname = login+"_"+courant.getChild("IDUser").getTextTrim();
 				search = false;
 			}
 		}	
