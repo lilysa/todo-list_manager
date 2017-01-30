@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AllTasks>
-<Task>
-	<IDTask>0</IDTask>
-	<NameTask>Jesuislenom</NameTask>
-	<ContentTask>Je suis le contenu</ContentTask>
-	<PriorityTask>5</PriorityTask>
-	<StateTask>fini</StateTask>
-	<AuthorTask>2</AuthorTask>
-	<ActorTask>2</ActorTask>
-	<DateTask>23/02/17</DateTask>
-</Task>
-<Task>
-	<IDTask>1</IDTask>
-	<NameTask>Jesuislenom1</NameTask>
-	<ContentTask>Je suis le contenu1</ContentTask>
-	<PriorityTask>5</PriorityTask>
-	<StateTask>fini</StateTask>
-	<AuthorTask>2</AuthorTask>
-	<ActorTask>2</ActorTask>
-	<DateTask>23/02/17</DateTask>
-</Task>
-<Task>
-</Task>
+  <Task>
+    <IDTask>0</IDTask>
+    <NameTask>Jesuislenom</NameTask>
+    <ContentTask>Je suis le contenu</ContentTask>
+    <PriorityTask>5</PriorityTask>
+    <StateTask>fini</StateTask>
+    <AuthorTask>2</AuthorTask>
+    <ActorTask>2</ActorTask>
+    <DateTask>23/02/17</DateTask>
+  </Task>
+  <Task>
+    <IDTask>1</IDTask>
+    <NameTask>Jesuislenom1</NameTask>
+    <ContentTask>Je suis le contenu1</ContentTask>
+    <PriorityTask>5</PriorityTask>
+    <StateTask>a faire</StateTask>
+    <AuthorTask>2</AuthorTask>
+    <ActorTask>2</ActorTask>
+    <DateTask>23/02/17</DateTask>
+  </Task>
+  <Task />
 </AllTasks>
-

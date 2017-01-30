@@ -54,22 +54,21 @@ public class Task {
 		 */
 		public Task (String fullTask) {
 			
-			String[] partTask = fullTask.split("*");
-			Task t = new Task();
-			t.setId_task(Integer.parseInt(partTask[0]));
-			t.setName_task(partTask[1]);
-			t.setContent_task(partTask[2]);
-			t.setPriority_task(Integer.parseInt(partTask[3]));
-			t.setFinal_date_task(partTask[4]);
-			t.setState_task(partTask[5]);
-			t.setId_author(Integer.parseInt(partTask[6]));
-			t.setId_actor(Integer.parseInt(partTask[7]));
+			String[] partTask = fullTask.split("_");
+			id_task = Integer.parseInt(partTask[0]);
+			name_task = partTask[1];
+			content_task = partTask[2];
+			priority_task = Integer.parseInt(partTask[3]);
+			final_date_task = partTask[4];
+			state_task = partTask[5];
+			id_author = Integer.parseInt(partTask[6]);
+			id_actor = Integer.parseInt(partTask[7]);
 		}
 		
 		@Override
 		public String toString() {
-			return id_task + "*" + name_task + "*" + content_task + "*" + priority_task + "*" + final_date_task + "*"
-					+ state_task + "*" + id_author + "*" + id_actor;
+			return id_task + "_" + name_task + "_" + content_task + "_" + priority_task + "_" + final_date_task + "_"
+					+ state_task + "_" + id_author + "_" + id_actor;
 		}
 	
 

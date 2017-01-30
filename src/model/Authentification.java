@@ -108,10 +108,12 @@ public class Authentification implements Runnable {
 		SAXBuilder sxb = new SAXBuilder();
 	    document = sxb.build(new File("AllTheUsers.xml"));
 	    racine = document.getRootElement();
-	    List listUser = racine.getChildren("User");
+	    List<Element> listUser = racine.getChildren("User");
 		Iterator<Element> i = listUser.iterator();
+		
 		while(i.hasNext() == true){
 			   Element courant = (Element)i.next();
+			   
 			   if (courant.getChild("NameUser").getTextTrim().equals(login)){
 				   if(courant.getChild("PswUser").getTextTrim().equals(pass)){
 					   return true;

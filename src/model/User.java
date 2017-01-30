@@ -1,10 +1,8 @@
 package model;
 
 
-import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.*;
 import java.util.Iterator;
 import java.util.List;
@@ -66,10 +64,10 @@ public class User {
 	}
 	
 	//AJOUTER UNE TACHE
-	public void create_task (String file, Task task) throws JDOMException, IOException {
+	public void create_task (Task task) throws JDOMException, IOException {
 		
 		SAXBuilder sxb = new SAXBuilder();
-	    document = sxb.build(new File(file));
+	    document = sxb.build(new File("AllTheTasks.xml"));
 	    racine = document.getRootElement();
 	    List<Element> listTask = racine.getChildren("Task");
 		int nbNode = listTask.size();
@@ -107,20 +105,20 @@ public class User {
 		racine.addContent(t);
 		
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-        sortie.output(document, new FileOutputStream(file));
+        sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
 		
 	}
 		
 	//SUPPRIMER UNE TACHE
-	public void supress_task (String file, Task task) throws JDOMException, IOException {
+	public void supress_task (Task task) throws JDOMException, IOException {
 		SAXBuilder sxb = new SAXBuilder();
-	     document = sxb.build(new File(file));
+	     document = sxb.build(new File("AllTheTasks.xml"));
 	     racine = document.getRootElement();
 		boolean search = true;
 		int id = (int)task.getId_task();
 		String idS = Integer.toString(id);
-		List listTask = racine.getChildren("Task");
-		Iterator i = listTask.iterator();
+		List<Element> listTask = racine.getChildren("Task");
+		Iterator<Element> i = listTask.iterator();
 		while((i.hasNext() == true) && (search == true)){
 			   Element courant = (Element)i.next();
 			   
@@ -132,20 +130,20 @@ public class User {
 		 }
 
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-        sortie.output(document, new FileOutputStream(file));
+        sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
 	}
 	
 	//MODIFIER UNE TACHE
-	public void change_task(String file, Task task) throws JDOMException, IOException {
+	public void change_task(Task task) throws JDOMException, IOException {
 		SAXBuilder sxb = new SAXBuilder();
-	     document = sxb.build(new File(file));
+	     document = sxb.build(new File("AllTheTasks.xml"));
 	     racine = document.getRootElement();
 		boolean search = true;
 		
 		int id = (int)task.getId_task();
 		String idS = Integer.toString(id);
-		List listTask = racine.getChildren("Task");
-		Iterator i = listTask.iterator();
+		List<Element> listTask = racine.getChildren("Task");
+		Iterator<Element> i = listTask.iterator();
 		while((i.hasNext() == true) && (search == true)){
 			
 		    Element courant = (Element)i.next();
@@ -161,7 +159,7 @@ public class User {
 		}	
 		
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-        sortie.output(document, new FileOutputStream(file));
+        sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
 		
 		
 	}
