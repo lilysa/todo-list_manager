@@ -63,6 +63,32 @@ public class User {
 		this.psw_user = psw;
 	}
 	
+	//VERIFIE EXISTENCE ACTOR
+	//L'utilisateur ne doit pas pouvoir créer une tâche ayant un acteur fictif
+	public boolean existActor (String actor) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	    document = sxb.build(new File("AllTheUsers.xml"));
+	    racine = document.getRootElement();
+	    
+	    boolean search = true;
+	    int j = 0;
+	    
+	    List<Element> listTask = racine.getChildren("User");
+	    Iterator<Element>i = listTask.iterator();
+	    int nbNode = listTask.size();
+		while((i.hasNext() == true) && (search == true)){
+			Element courant = (Element)i.next();
+			j++;
+			if (j<nbNode) {
+				if(courant.getChild("NameUser").getTextTrim().equals(actor)){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
 	//AJOUTER UNE TACHE
 	public void create_task (Task task) throws JDOMException, IOException {
 		
