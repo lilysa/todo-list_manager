@@ -8,25 +8,41 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+//import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
+import model.Authentification;
 import model.ParserTaskXML;
 import model.Task;
 import model.User;
 
 public class Main {
 
+	static org.jdom2.Document document;
+	   static org.jdom2.Element racine;
+	
 	public static void main(String[] args) {
 
 
+
 	//INITIALISATION DES VARIABLES UTILES POUR LA CREATION D'UN USER ET D'UNE TACHE
-	int id = 1;
+	int id = 2;
 	int idu = 0;
 	String name1 = "name1";
 	String cont1 = "content1";
@@ -47,30 +63,21 @@ public class Main {
 	
 	System.out.println("Id task :" + test1.getId_task() +" Name : " + test1.getName_task() +" Date : " + test1.getFinal_date_task() + " author : " + test1.getId_author());
 
-	
-	//ECRITURE DANS UN FICHIER
-/**	//Path pathFileTask = Paths.get("AllTheTasks.xml");
-    BufferedWriter XMLWriterAllTheTasks;
-    OutputStreamWriter XMLOSWriter;
-    String BeginFile = "toto"; //Files.newOutputStream(pathFileTask)
-	try { 
-		XMLOSWriter = new OutputStreamWriter(new FileOutputStream("test.xml",true), "UTF-8");
-		XMLWriterAllTheTasks = new BufferedWriter(XMLOSWriter);
-		XMLWriterAllTheTasks.write(BeginFile);
-		XMLWriterAllTheTasks.flush();
-		XMLWriterAllTheTasks.write("\ntest");
-		XMLWriterAllTheTasks.flush();
-		XMLWriterAllTheTasks.close();
-	} catch (IOException e) {
+	try {
+		//us1.begin_task("test.xml",test1);
+		//us1.finish_task("test.xml", test1);
+		//us1.obtain_task("test.xml", test1);
+		//us1.supress_task("test.xml", test1);
+		//us1.change_task("test.xml", test1);
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-
 	
-	List<Task> toto = new ArrayList<Task>();
-	toto.add(test1);
-	System.out.println(toto.get(0).getName_task());
-	*/
+	
+	
+	
+	
 	try {
 		List<Task> test = readTasks(new FileInputStream("AllTheTasks.xml"));
 		System.out.println(test.get(0).getName_task() + test.get(1).getName_task());
@@ -80,15 +87,26 @@ public class Main {
 	}
 	
 	
-	us1.create_task(test1);
-	
+	try {
+		us1.create_task("test.xml",test1);
+		us1.create_task("test.xml",test1);
+		us1.supress_task("test.xml", test1);
+		
+	} catch (JDOMException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+
+		
+}
 	
 	
 
-	}
-	
-	
-	
+
 	//PARSER
 	public static List<Task> readTasks(FileInputStream in) throws ParserConfigurationException, SAXException, IOException {
 		
@@ -105,4 +123,4 @@ public class Main {
 	}
 	
 	
-}
+}	

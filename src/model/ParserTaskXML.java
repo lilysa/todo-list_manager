@@ -154,6 +154,9 @@ public class ParserTaskXML  extends DefaultHandler{
 			  task.setId_actor(convert);
 		  }
 
+		  if ((balise == "DateTask") && (debutBalise == true)){
+			  task.setFinal_date_task(contenu);
+		  }
 
 	  }
 

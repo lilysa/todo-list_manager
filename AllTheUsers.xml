@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AllTheUsers>
+  <User>
+    <IDUser />
+    <NameUser />
+    <PswUser />
+  </User>
+  <User>
+    <IDUser>2</IDUser>
+    <NameUser>nom</NameUser>
+    <PswUser>mdp</PswUser>
+  </User>
+  <User />
+</AllTheUsers>

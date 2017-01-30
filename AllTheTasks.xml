@@ -8,6 +8,7 @@
 	<StateTask>fini</StateTask>
 	<AuthorTask>2</AuthorTask>
 	<ActorTask>2</ActorTask>
+	<DateTask>23/02/17</DateTask>
 </Task>
 <Task>
 	<IDTask>1</IDTask>
@@ -17,15 +18,9 @@
 	<StateTask>fini</StateTask>
 	<AuthorTask>2</AuthorTask>
 	<ActorTask>2</ActorTask>
+	<DateTask>23/02/17</DateTask>
 </Task>
 <Task>
 </Task>
-</AllTasks><Task>
-	<IDTask>1</IDTask>
-	<NameTask>name1</NameTask>
-	<ContentTask>content1</ContentTask>
-	<PriorityTask>5</PriorityTask>
-	<StateTask>à_faire</StateTask>
-	<AuthorTask>0</AuthorTask>
-	<ActorTask>1</ActorTask>
-</Task>
+</AllTasks>
+

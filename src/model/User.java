@@ -1,12 +1,28 @@
 package model;
 
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.*;
+import java.util.Iterator;
+import java.util.List;
+
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
+import model.Task;
+
 
 public class User {
 
+	static org.jdom2.Document document;
+	static Element racine;
+	
 	private int id_user = 0;
 	private String name_user = null;
 	private String psw_user = null;
@@ -50,47 +66,104 @@ public class User {
 	}
 	
 	//AJOUTER UNE TACHE
-	public void create_task (Task task) {
-		//on écrit dans le fichier
-	    BufferedWriter XMLWriterAllTheTasks;
-	    OutputStreamWriter XMLOSWriter;
-		try { 
-			XMLOSWriter = new OutputStreamWriter(new FileOutputStream("AllTheTasks.xml",true), "UTF-8");
-			XMLWriterAllTheTasks = new BufferedWriter(XMLOSWriter);
-			XMLWriterAllTheTasks.write("\n<Task>\n\t<IDTask>" +task.getId_task()+"</IDTask>\n\t<NameTask>"+task.getName_task()+"</NameTask>\n\t<ContentTask>"+task.getContent_task()+"</ContentTask>\n\t<PriorityTask>"+task.getPriority_task()+"</PriorityTask>\n\t<StateTask>"+task.getState_task()+"</StateTask>\n\t<AuthorTask>"+task.getId_author()+"</AuthorTask>\n\t<ActorTask>"+task.getId_actor()+"</ActorTask>\n</Task>");
-			XMLWriterAllTheTasks.flush();
-			XMLWriterAllTheTasks.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void create_task (String file, Task task) throws JDOMException, IOException {
+		
+		SAXBuilder sxb = new SAXBuilder();
+	    document = sxb.build(new File(file));
+	    racine = document.getRootElement();
+	    List<Element> listTask = racine.getChildren("Task");
+		int nbNode = listTask.size();
+		Element newTask = (Element) listTask.get(nbNode-1); //on se place au bon endroit
+		
+		Element iDTask = new Element("IDTask");	//création des noeuds
+		Element nameTask = new Element("NameTask");
+		Element contentTask = new Element("ContentTask");
+		Element priorityTask = new Element("PriorityTask");
+		Element stateTask = new Element("StateTask");
+		Element authorTask = new Element("AuthorTask");
+		Element actorTask = new Element("ActorTask");
+		Element dateTask = new Element("DateTask");
+		
+		newTask.addContent(iDTask);//ajout des balises au fichier
+		newTask.addContent(nameTask);
+		newTask.addContent(contentTask);
+		newTask.addContent(priorityTask);
+		newTask.addContent(stateTask);
+		newTask.addContent(authorTask);
+		newTask.addContent(actorTask);
+		newTask.addContent(dateTask);
+		
+		newTask.getChild("IDTask").addContent(Integer.toString(nbNode)); //ajout du contenu des balises
+		newTask.getChild("NameTask").addContent(task.getName_task());
+		newTask.getChild("ContentTask").addContent(task.getContent_task());
+		newTask.getChild("PriorityTask").addContent(Integer.toString(task.getPriority_task()));
+		newTask.getChild("StateTask").addContent(task.getState_task());
+		newTask.getChild("AuthorTask").addContent(Integer.toString(task.getId_author()));
+		newTask.getChild("ActorTask").addContent(Integer.toString(task.getId_actor()));
+		newTask.getChild("DateTask").addContent(task.getFinal_date_task());
+		
+		//nouveau noeud task vide
+		Element t = new Element("Task");
+		racine.addContent(t);
+		
+		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+        sortie.output(document, new FileOutputStream(file));
+		
 	}
 		
 	//SUPPRIMER UNE TACHE
-	public void supress_task (Task task) {
-		//suppression dans le fichier xml
+	public void supress_task (String file, Task task) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	     document = sxb.build(new File(file));
+	     racine = document.getRootElement();
+		boolean search = true;
+		int id = (int)task.getId_task();
+		String idS = Integer.toString(id);
+		List listTask = racine.getChildren("Task");
+		Iterator i = listTask.iterator();
+		while((i.hasNext() == true) && (search == true)){
+			   Element courant = (Element)i.next();
+			   
+			   if(courant.getChild("IDTask").getTextTrim().equals(idS)){
+				   courant.removeContent();
+				   courant.setName("TaskSuppr");
+				   search = false;
+			   }
+		 }
+
+		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+        sortie.output(document, new FileOutputStream(file));
 	}
 	
-	//PRENDRE UNE TACHE
-	public void obtain_task (Task task) {
-		task.setId_author(this.getId_user());
-		//modifier l'auteur dans le fichier
-	}
-	
-	//COMMENCER UNE TACHE
-	public void begin_task (Task task) {
-		if (!task.getState_task().equals("en_cours")) {
-			task.setState_task("en_cours");
-			//modifier l'état dans le fichier
+	//MODIFIER UNE TACHE
+	public void change_task(String file, Task task) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	     document = sxb.build(new File(file));
+	     racine = document.getRootElement();
+		boolean search = true;
+		
+		int id = (int)task.getId_task();
+		String idS = Integer.toString(id);
+		List listTask = racine.getChildren("Task");
+		Iterator i = listTask.iterator();
+		while((i.hasNext() == true) && (search == true)){
+			
+		    Element courant = (Element)i.next();
+			if(courant.getChild("IDTask").getTextTrim().equals(idS) ){
+				courant.getChild("NameTask").setText(task.getName_task());
+				courant.getChild("ContentTask").setText(task.getContent_task());
+				courant.getChild("PriorityTask").setText(Integer.toString(task.getPriority_task()));
+				courant.getChild("StateTask").setText(task.getState_task());
+				courant.getChild("ActorTask").setText(Integer.toString(task.getId_actor()));
+				courant.getChild("DateTask").setText(task.getFinal_date_task());
+				search = false;
+			}
 		}	
-	}
-	
-	//FINIR UNE TACHE
-	public void finish_task(Task task) {
-		if (!task.getState_task().equals("fini")) {
-			task.setState_task("fini");
-			//modifier l'état dans le fichier
-		}
+		
+		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+        sortie.output(document, new FileOutputStream(file));
+		
+		
 	}
 	
 }
