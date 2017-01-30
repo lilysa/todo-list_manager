@@ -29,7 +29,6 @@ import org.jdom2.output.XMLOutputter;
 
 import model.Authentification;
 import model.JDOMLectureTasks;
-import model.ParserTaskXML;
 import model.Task;
 import model.User;
 
@@ -76,18 +75,6 @@ public class Main {
 	}
 	
 	
-	
-	
-	
-	try {
-		List<Task> test = readTasks(new FileInputStream("AllTheTasks.xml"));
-		System.out.println(test.get(0).getName_task() + test.get(1).getName_task());
-	} catch (ParserConfigurationException | SAXException | IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	
 	try {
 		us1.create_task(test1);
 		us1.create_task(test1);
@@ -118,21 +105,6 @@ public class Main {
 	
 	
 
-
-	//PARSER
-	public static List<Task> readTasks(FileInputStream in) throws ParserConfigurationException, SAXException, IOException {
-		
-		// TODO Recherche les albums en SAX
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		factory.setNamespaceAware(true);
-		SAXParser sax = factory.newSAXParser();
-
-		ParserTaskXML handler = new ParserTaskXML();
-		sax.parse(in, handler);
-
-		
-		return handler.getListTaskHighPriority();
-	}
 	
 	
 }	

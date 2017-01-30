@@ -119,10 +119,103 @@ public static List<Task> recupTasksDone() throws JDOMException, IOException {
 	}
 		
 	//POUR RECUPERER LES PRIORITES 5
+public static List<Task> recupHighPriorityTasks() throws JDOMException, IOException {
 	
+	List<Task> listHighPriorityTask = new ArrayList<Task>();
 	
+	SAXBuilder sxb = new SAXBuilder();
+    document = sxb.build(new File("AllTheTasks.xml"));
+    racine = document.getRootElement();
+    List<Element> listTask = racine.getChildren("Task");
+    Iterator<Element> i = listTask.iterator();
+	int nbNode = listTask.size();
+	int j = 0;
+	while(i.hasNext() == true){
+		   Element courant = (Element)i.next();
+		   j++;
+		   if (j < nbNode){
+		   if(courant.getChild("PriorityTask").getTextTrim().equals("5")){
+			   listHighPriorityTask.add(new Task(courant.getChild("IDTask").getTextTrim()+"_"
+					   			+courant.getChild("NameTask").getTextTrim()+"_"+courant.getChild("ContentTask").getTextTrim()
+					   			+"_"+courant.getChild("PriorityTask").getTextTrim()+"_"+courant.getChild("DateTask").getTextTrim()
+					   			+"_"+courant.getChild("StateTask").getTextTrim()+"_"+courant.getChild("AuthorTask").getTextTrim()
+					   			+"_"+courant.getChild("ActorTask").getTextTrim()));
+		   }
+		   }
+	 }
+
+	XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+    sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
+
+return listHighPriorityTask;
+}
 	
+
+//POUR RECUPERER LES TACHES NON ATTRIBUEES
+public static List<Task> recupTasksWithoutActor() throws JDOMException, IOException {
 	
+	List<Task> listTaskWithoutActor = new ArrayList<Task>();
+	
+	SAXBuilder sxb = new SAXBuilder();
+    document = sxb.build(new File("AllTheTasks.xml"));
+    racine = document.getRootElement();
+    List<Element> listTask = racine.getChildren("Task");
+    Iterator<Element> i = listTask.iterator();
+	int nbNode = listTask.size();
+	int j = 0;
+	while(i.hasNext() == true){
+		   Element courant = (Element)i.next();
+		   j++;
+		   if (j < nbNode){
+		   if(courant.getChild("ActorTask").getTextTrim().equals("0")){
+			   listTaskWithoutActor.add(new Task(courant.getChild("IDTask").getTextTrim()+"_"
+					   			+courant.getChild("NameTask").getTextTrim()+"_"+courant.getChild("ContentTask").getTextTrim()
+					   			+"_"+courant.getChild("PriorityTask").getTextTrim()+"_"+courant.getChild("DateTask").getTextTrim()
+					   			+"_"+courant.getChild("StateTask").getTextTrim()+"_"+courant.getChild("AuthorTask").getTextTrim()
+					   			+"_"+courant.getChild("ActorTask").getTextTrim()));
+		   }
+		   }
+	 }
+
+	XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+    sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
+
+return listTaskWithoutActor;
+}
+
+//POUR LES TACHES DE L'UTILISATEUR
+public static List<Task> recupYourTasks(String IDcourantUser) throws JDOMException, IOException {
+	
+	List<Task> listYourTask = new ArrayList<Task>();
+	
+	SAXBuilder sxb = new SAXBuilder();
+    document = sxb.build(new File("AllTheTasks.xml"));
+    racine = document.getRootElement();
+    List<Element> listTask = racine.getChildren("Task");
+    Iterator<Element> i = listTask.iterator();
+	int nbNode = listTask.size();
+	int j = 0;
+	while(i.hasNext() == true){
+		   Element courant = (Element)i.next();
+		   j++;
+		   if (j < nbNode){
+		   if(courant.getChild("ActorTask").getTextTrim().equals(IDcourantUser)){
+			   listYourTask.add(new Task(courant.getChild("IDTask").getTextTrim()+"_"
+					   			+courant.getChild("NameTask").getTextTrim()+"_"+courant.getChild("ContentTask").getTextTrim()
+					   			+"_"+courant.getChild("PriorityTask").getTextTrim()+"_"+courant.getChild("DateTask").getTextTrim()
+					   			+"_"+courant.getChild("StateTask").getTextTrim()+"_"+courant.getChild("AuthorTask").getTextTrim()
+					   			+"_"+courant.getChild("ActorTask").getTextTrim()));
+		   }
+		   }
+	 }
+
+	XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+    sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
+
+return listYourTask;
+}
+
+
 }
 
 
