@@ -20,7 +20,8 @@ public class Authentification implements Runnable {
 	private String reception = null
 			, login = null
 			, pass =  null
-			, action = null;
+			, action = null
+			, send = null;
 	public boolean authentifier = false;
 	public Thread t2;
 	
@@ -46,7 +47,9 @@ public class Authentification implements Runnable {
 			if (action.equals("connection")){
 				try {
 				if(isValid(login, pass)){
-					out.println("true");
+					send = getNameAndIDUser(login);
+					send = "true*"+send;
+					out.println(send);
 					out.flush();
 					authentifier = true;	
 				}
@@ -66,7 +69,9 @@ public class Authentification implements Runnable {
 			if (action.equals("signUp")){
 				try {
 				if(isANewUser(login, pass)){
-					out.println("true");
+					send = getNameAndIDUser(login);
+					send = "true*"+send;
+					out.println(send);
 					out.flush();
 					authentifier = true;	
 				}
