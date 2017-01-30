@@ -27,8 +27,11 @@ public class AppToDoListManager extends Application {
     //public static Task test = new Task(0, "app2", "totodolsit", 2, "01/05/2017", "prete", new User(3, "Kirikou", "secret"), new User(4, "Sorciere", "clochette"));
     private static User currentUser = new User(9, "Dr. Acula", "Vlad");
     private static Task currentTask = null;
-    //public static Client client = new Client();
+    private static Client client = new Client();
     
+    public static Client getClient(){
+    	return client;
+    }
 	public static User getCurrentUser() {
 		return currentUser;
 	}

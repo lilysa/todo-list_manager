@@ -15,6 +15,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import model.Client;
 import model.ControlledScreen;
 import model.ScreensController;
 import model.User;
@@ -42,15 +43,20 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 		 connectButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	
-	                //si l'user et mdp sont corrects
-	                	AppToDoListManager.setCurrentUser(new User(5, login.getText(), password.getText()));
+	            	String identifiers = login.getText() + password.getText();
+	            	AppToDoListManager.getClient();
+					Client.sendConnectServer(identifiers);
+	            	AppToDoListManager.getClient();
+					String response = Client.readAnswerFromServer();
+	            	String[] splitResponse = response.split("*");
+	            	if(splitResponse[0].equals("true")){
+	            		AppToDoListManager.setCurrentUser(new User(Integer.parseInt(splitResponse[1]), splitResponse[2], ""));
 	                	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
 	                	myController.setScreen(AppToDoListManager.connectID);
-	                	
-	                //sinon
-	                	//password.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
-	                	//login.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
+	            	}else{
+	            		password.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
+	                	login.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));;
+	            	}
 	            }
 	        });
 
