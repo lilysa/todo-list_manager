@@ -128,21 +128,21 @@
                   <ComboBox fx:id="choosePriority" prefHeight="25.0" prefWidth="78.0" visibleRowCount="6" GridPane.columnIndex="1" GridPane.rowIndex="3">
                   		<items>
 			                <FXCollections fx:factory="observableArrayList">
-			                	<String fx:id="priority1" fx:value="0" />
-			                    <String fx:id="priority1" fx:value="1" />
-			                    <String fx:id="priority2" fx:value="2" />
-			                    <String fx:id="priority3" fx:value="3" />
-			                    <String fx:id="priority4" fx:value="4" />
-			                    <String fx:id="priority5" fx:value="5" />
+			                	<String fx:value="0" />
+			                    <String fx:value="1" />
+			                    <String fx:value="2" />
+			                    <String fx:value="3" />
+			                    <String fx:value="4" />
+			                    <String fx:value="5" />
 			                </FXCollections>
 			            </items>
                   </ComboBox>
                   <ComboBox fx:id="chooseState" prefHeight="25.0" prefWidth="257.0" visibleRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="5">
                   		<items>
                 			<FXCollections fx:factory="observableArrayList">
-			                    <String fx:id="ready" fx:value="Prête" />
-			                    <String fx:id="beingDone" fx:value="En cours" />
-			                    <String fx:id="done" fx:value="Finie" />
+			                    <String fx:value="Prête" />
+			                    <String fx:value="En cours" />
+			                    <String fx:value="Finie" />
 			                </FXCollections>
 			            </items>
                   </ComboBox>

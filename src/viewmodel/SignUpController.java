@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import model.ControlledScreen;
 import model.ScreensController;
+import model.User;
 
 public class SignUpController implements Initializable, ControlledScreen {
 	@FXML
@@ -48,7 +49,9 @@ public class SignUpController implements Initializable, ControlledScreen {
 						String response = AppToDoListManager.readAnswerFromServer();
 						String[] splitResponse = response.split("_");
 						if(splitResponse[0].equals("true")){
-							myController.setScreen(AppToDoListManager.authentificationID);
+							AppToDoListManager.setCurrentUser(new User(Integer.parseInt(splitResponse[2]), splitResponse[1], "x"));
+		                	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+		                	myController.setScreen(AppToDoListManager.connectID);
 						}else{
 							userName.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
 						}

@@ -39,11 +39,11 @@ public class ConnectController implements Initializable, ControlledScreen {
 	            @Override
 	            public void handle(ActionEvent event) {
 	            	//Task t = new Task(0, "connectcon", "roller", 2, "2017-02-23", "en_cours", new User(1, "Jon Snow", "secret"), new User(2, "Peter Pan", "clochette"));
-	                if(!(AppToDoListManager.getCurrentTask() !=null))
+	                //if(!(AppToDoListManager.getCurrentTask() !=null))
 	                		//AppToDoListManager.setCurrentTask(t);
 	            	
-	            	myController.loadScreen(AppToDoListManager.takManagementID, AppToDoListManager.TaskManagementFile);
-	                myController.setScreen(AppToDoListManager.takManagementID);
+	            	myController.loadScreen(AppToDoListManager.taskManagementID, AppToDoListManager.TaskManagementFile);
+	                myController.setScreen(AppToDoListManager.taskManagementID);
 	            }
 	        });
 	    }

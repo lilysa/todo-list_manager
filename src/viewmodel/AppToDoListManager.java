@@ -26,7 +26,7 @@ public class AppToDoListManager extends Application {
     public static String connectID = "Connect";
     public static String ConnectFile = "../view/Connect.fxml";
     
-    public static String takManagementID = "TaskManagement";
+    public static String taskManagementID = "TaskManagement";
     public static String TaskManagementFile = "../view/TaskManagement.fxml";
     
     //Client variables
@@ -93,7 +93,7 @@ public class AppToDoListManager extends Application {
         mainContainer.loadScreen(AppToDoListManager.authentificationID, AppToDoListManager.AuthentificationFile);
         mainContainer.loadScreen(AppToDoListManager.signUpID, AppToDoListManager.SignUpFile);
         //mainContainer.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
-        //mainContainer.loadScreen(AppToDoListManager.takManagementID, AppToDoListManager.TaskManagementFile);
+        //mainContainer.loadScreen(AppToDoListManager.taskManagementID, AppToDoListManager.TaskManagementFile);
         
         mainContainer.setScreen(AppToDoListManager.authentificationID);
         
