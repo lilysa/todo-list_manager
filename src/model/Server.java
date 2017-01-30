@@ -10,7 +10,7 @@ public class Server {
 	public static void main(String[] args) {
 		
 		try {
-			ss = new ServerSocket(2010);
+			ss = new ServerSocket(2009);
 			System.out.println("Le serveur est à l'écoute du port "+ss.getLocalPort());
 			
 			t = new Thread(new AcceptConnection(ss));
