@@ -215,6 +215,42 @@ public static List<Task> recupYourTasks(String IDcourantUser) throws JDOMExcepti
 return listYourTask;
 }
 
+//POUR RECUPERER LES DEUX DERNIERES TACHES
+public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMException, IOException {
+	
+	List<Task> TwoLastTasks = new ArrayList<Task>();
+	
+	SAXBuilder sxb = new SAXBuilder();
+    document = sxb.build(new File("AllTheTasks.xml"));
+    racine = document.getRootElement();
+    
+    List<Element> listTask = racine.getChildren("Task");
+    
+    int nbNode = listTask.size();
+	if (nbNode>1){
+    Element last1 = listTask.get(nbNode);
+    TwoLastTasks.add(new Task(last1.getChild("IDTask").getTextTrim()+"_"
+   			+last1.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
+   			+"_"+last1.getChild("PriorityTask").getTextTrim()+"_"+last1.getChild("DateTask").getTextTrim()
+   			+"_"+last1.getChild("StateTask").getTextTrim()+"_"+last1.getChild("AuthorTask").getTextTrim()
+   			+"_"+last1.getChild("ActorTask").getTextTrim()));
+   
+    if(nbNode>2){
+    Element last2 = listTask.get(nbNode-1);
+    TwoLastTasks.add(new Task(last2.getChild("IDTask").getTextTrim()+"_"
+   			+last2.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
+   			+"_"+last2.getChild("PriorityTask").getTextTrim()+"_"+last2.getChild("DateTask").getTextTrim()
+   			+"_"+last2.getChild("StateTask").getTextTrim()+"_"+last2.getChild("AuthorTask").getTextTrim()
+   			+"_"+last2.getChild("ActorTask").getTextTrim()));
+    }
+	}
+	XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+    sortie.output(document, new FileOutputStream("AllTheTasks.xml"));
+
+return TwoLastTasks;
+}
+
+
 
 }
 
