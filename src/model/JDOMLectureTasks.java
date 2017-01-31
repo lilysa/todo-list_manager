@@ -250,6 +250,51 @@ public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMExce
 return TwoLastTasks;
 }
 
+
+//POUR RECUPERER UNE TACHE AVEC UN JOLI AFFICHAGE
+public static String displayTask(Task t) throws JDOMException, IOException {
+	String display = new String ();
+	String idAuthor = new String();
+	String idActor = new String();
+	
+	SAXBuilder sxb = new SAXBuilder();
+    document = sxb.build(new File("AllTheTasks.xml"));
+    racine = document.getRootElement();
+    
+    List<Element> listTask = racine.getChildren("Task");
+    Iterator<Element>i = listTask.iterator();
+    
+    boolean search = true;
+    int nbNode = listTask.size();
+    int j = 0;
+    
+    int id = (int)t.getId_task();
+	String idS = Integer.toString(id);
+	
+	while((i.hasNext() == true) && (search == true)){
+		   Element courant = (Element)i.next();
+		   
+		   if(courant.getChild("IDTask").getTextTrim().equals(idS)){
+			   display = "\nDate de fin : "+courant.getChild("DateTask").getTextTrim()+
+					   "\nDescription : "+courant.getChild("ContentTask").getTextTrim()+					   
+					   "\nPriorité : "+courant.getChild("PriorityTask").getTextTrim()+
+					   "\nÉtat : "+courant.getChild("StateTask").getTextTrim();
+			   idActor = courant.getChild("ActorTask").getTextTrim();
+			   idAuthor = courant.getChild("AuthorTask").getTextTrim();
+			   search = false;
+		   } //à ce stade on a tout sauf l'auteur et le réalisateur	   
+	}
+	
+	//pour récupérer l'acteur
+	String actor = t.getNameActor(Integer.parseInt(idActor));
+    String author = t.getNameAuthor(Integer.parseInt(idAuthor));
+    display = "Réalisateur : "+actor+"\nCréateur de la tâche :"+author+display;
+    
+	return display;
+}
+
+
+
 }
 
 

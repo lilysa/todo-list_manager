@@ -174,4 +174,28 @@ public class Task {
        return "erreur";	
 	}
 	
+	//PETITE FONCTION POUR RECUPERER LE NOM DE L'AUTEUR
+	public String getNameAuthor(int idAuthor) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	    document = sxb.build(new File("AllTheUsers.xml"));
+	    racine = document.getRootElement();
+		boolean search = true;
+
+		List listUsers = racine.getChildren("User");
+		Iterator i = listUsers.iterator();
+		
+		while((i.hasNext() == true) && (search == true)){
+			
+		    Element courant = (Element)i.next();
+			if(courant.getChild("IDUser").getTextTrim().equals(Integer.toString(idAuthor)) ){
+				search = false;
+				return courant.getChild("NameUser").getTextTrim();
+			}
+		}	
+		
+		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+       sortie.output(document, new FileOutputStream("AllTheUsers.xml"));
+       return "erreur";	
+	}
+	
 }
