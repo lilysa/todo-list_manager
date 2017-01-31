@@ -67,6 +67,8 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	            	//AppToDoListManager.setCurrentTask(new Task(7, taskNameDisplay.getText(), descriptionText.getText(), Integer.parseInt(choosePriority.getValue()), endDateDisplay.getValue().toString(),chooseState.getPromptText(), u, AppToDoListManager.getCurrentUser()));
 	            		//potentiellement ici on unloaderait connect screen pour le reloader pour "actualiser"
 	                //si etat a été modif, vérif si currentUser == actor alros appel à change_task
+	            		//--> chooseState.getValue() != apptodoManager.getcurrentTask().getState()
+	            		//--> si getcurrentTask.getActor != getcurrentuser
 	            	//sinon etat en rouge et pas d'appel
 	            	//si idCurrentSUer == id tache alors on peut la supprimer
 	            	//si pas de modif d'état appel de change_task
