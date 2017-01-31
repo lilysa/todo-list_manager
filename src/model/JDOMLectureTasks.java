@@ -286,9 +286,12 @@ public static String displayTask(Task t) throws JDOMException, IOException {
 	}
 	
 	//pour récupérer l'acteur
-	String actor = t.getNameActor(Integer.parseInt(idActor));
+	String actor = "";
+	if(Integer.parseInt(idActor)>=0){
+		actor = t.getNameActor(Integer.parseInt(idActor));
+	}
     String author = t.getNameAuthor(Integer.parseInt(idAuthor));
-    display = "Réalisateur : "+actor+"\nCréateur de la tâche :"+author+display;
+    display = "Réalisateur : "+actor+"\nCréateur de la tâche : "+author+display;
     
 	return display;
 }

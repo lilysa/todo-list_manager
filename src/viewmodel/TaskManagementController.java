@@ -41,12 +41,14 @@ public class TaskManagementController implements Initializable, ControlledScreen
 		 if(AppToDoListManager.isCurrentTaskInitialized()){ //préchargement des champs
 			 System.out.println("TM" + AppToDoListManager.getCurrentTask().toString());
 		 	taskNameDisplay.setText(AppToDoListManager.getCurrentTask().getName_task());
+		 	if(AppToDoListManager.getCurrentTask().getId_actor() > 0){
 		 	try {
 				chooseMaker.setText(AppToDoListManager.getCurrentTask().getNameActor(AppToDoListManager.getCurrentTask().getId_actor()));
 			} catch (JDOMException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		 	}
 		 	date = LocalDate.parse(AppToDoListManager.getCurrentTask().getFinal_date_task(), formatter);
 		 	endDateDisplay.setValue(date);
 		 	choosePriority.getSelectionModel().select(AppToDoListManager.getCurrentTask().getPriority_task());

@@ -71,7 +71,16 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 taskContent.clear();
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -103,7 +112,15 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -136,7 +153,15 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -169,7 +194,15 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -202,7 +235,15 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -235,7 +276,15 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 try {
+					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+				} catch (JDOMException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
@@ -267,7 +316,17 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 for(int i = 0; i < listeTache.size(); i++){
 			 taskContent = new TextArea();
 			 taskContent.clear();
-			 taskContent.setText(listeTache.get(i).getContent_task());
+			 
+			 try {
+				taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+			} catch (JDOMException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
 			 contentTitled = listeTache.get(i).getName_task();
 			 current = listeTache.get(i);
 			 tps[i] = new TitledPane(contentTitled, taskContent);
