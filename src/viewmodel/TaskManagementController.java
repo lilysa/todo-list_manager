@@ -1,23 +1,24 @@
 package viewmodel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
+import org.jdom2.JDOMException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.ControlledScreen;
 import model.ScreensController;
-import model.Task;
-import model.User;
 
 public class TaskManagementController implements Initializable, ControlledScreen {
 	ScreensController myController; 
@@ -31,18 +32,27 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	@FXML ComboBox<String> chooseState;
 	@FXML TextField chooseMaker;
 	
-	static LocalDate date;
+	static LocalDate date ;
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
-	        // TODO
-		 	//taskNameDisplay.setText(AppToDoListManager.getCurrentTask().getName_task());
-		 	//chooseMaker.setText(AppToDoListManager.getCurrentTask().getId_actor().getName_user());
-		 	//endDateDisplay.setValue(date.parse(AppToDoListManager.getCurrentTask().getFinal_date_task()));
-		 	//choosePriority.getSelectionModel().select(AppToDoListManager.getCurrentTask().getPriority_task());
-		 	//descriptionText.setText(AppToDoListManager.getCurrentTask().getContent_task());
-		 	//chooseState.getSelectionModel().select(AppToDoListManager.getCurrentTask().getState_task());
-		 	
+	   
+		 if(AppToDoListManager.isCurrentTaskInitialized()){ //préchargement des champs
+			 System.out.println("TM" + AppToDoListManager.getCurrentTask().toString());
+		 	taskNameDisplay.setText(AppToDoListManager.getCurrentTask().getName_task());
+		 	try {
+				chooseMaker.setText(AppToDoListManager.getCurrentTask().getNameActor(AppToDoListManager.getCurrentTask().getId_actor()));
+			} catch (JDOMException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 	date = LocalDate.parse(AppToDoListManager.getCurrentTask().getFinal_date_task(), formatter);
+		 	endDateDisplay.setValue(date);
+		 	choosePriority.getSelectionModel().select(AppToDoListManager.getCurrentTask().getPriority_task());
+		 	descriptionText.setText(AppToDoListManager.getCurrentTask().getContent_task());
+		 	chooseState.getSelectionModel().select(AppToDoListManager.getCurrentTask().getState_task());
+		 }
 		 	/*Button Action Definitions*/
 		 	cancelButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
@@ -56,7 +66,12 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	            public void handle(ActionEvent event) {
 	            	//AppToDoListManager.setCurrentTask(new Task(7, taskNameDisplay.getText(), descriptionText.getText(), Integer.parseInt(choosePriority.getValue()), endDateDisplay.getValue().toString(),chooseState.getPromptText(), u, AppToDoListManager.getCurrentUser()));
 	            		//potentiellement ici on unloaderait connect screen pour le reloader pour "actualiser"
-	                myController.setScreen(AppToDoListManager.connectID);
+	                //si etat a été modif, vérif si currentUser == actor alros appel à change_task
+	            	//sinon etat en rouge et pas d'appel
+	            	//si idCurrentSUer == id tache alors on peut la supprimer
+	            	//si pas de modif d'état appel de change_task
+	            	
+	            	myController.setScreen(AppToDoListManager.connectID);
 	            }
 	        });
 		 	

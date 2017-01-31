@@ -1,40 +1,288 @@
 package viewmodel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import org.jdom2.JDOMException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import model.ControlledScreen;
+import model.JDOMLectureTasks;
 import model.ScreensController;
 import model.Task;
-import model.User;
+
 
 public class ConnectController implements Initializable, ControlledScreen {
 	ScreensController myController; 
 	
-	@FXML	VBox en_cours;
-	@FXML	VBox urgentes;
-	@FXML	VBox finies;
-	@FXML	VBox non_attribuees;
-	@FXML	VBox vos_taches;
-	@FXML	VBox pretes;
+	@FXML	Accordion accordionEnCours;
+	@FXML	Accordion accordionUrgentes;
+	@FXML	Accordion accordionFinies;
+	@FXML	Accordion accordionNonAttribuees;
+	@FXML	Accordion accordionVosTaches;
+	@FXML	Accordion accordionPretes;
+	@FXML	Accordion accordionDernieresTaches;
 	@FXML	Button createTask;
-	@FXML	Button sortByEndDate;
-	@FXML	Button sortByDoer;
-	@FXML	Button sortByPriority;
+	@FXML	Button editTask;
+
 	@FXML	Text todaysDate;
 	
+	Button modifyTask = new Button("Modifier");
+	List<Task> listeTache;
+	Task current;
+	TitledPane[] tps;
+	String contentTitled;
+	TextArea taskContent;
 	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
 		 todaysDate.setText(LocalDate.now().toString());
+		 listeTache = new ArrayList<Task>();
+		
+		 /* --- INITIALISATION TACHES PRETES --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupToDoTasks();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionPretes.getPanes().addAll(tps);
+		 
+		 /* --- INITIALISATION TACHES NONATTRIBUEES --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupTasksWithoutActor();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionNonAttribuees.getPanes().addAll(tps);
+		 
+		 
+		 /* --- INITIALISATION TACHES VOSTACHES --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupYourTasks(Integer.toString(AppToDoListManager.getCurrentUser().getId_user()));
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionVosTaches.getPanes().addAll(tps);
+		 
+		 
+		 /* --- INITIALISATION TACHES FINIES --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupTasksDone();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionFinies.getPanes().addAll(tps);
+		 
+		 
+		 /* --- INITIALISATION TACHES URGENTES --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupHighPriorityTasks();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionUrgentes.getPanes().addAll(tps);
+		 
+		 
+		 /* --- INITIALISATION TACHES ENCOURS --- */
+		 try {
+			listeTache= JDOMLectureTasks.recupInProgressTasks();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionEnCours.getPanes().addAll(tps);
+		 
+		 /* --- INITIALISATION TACHES DERNIERESTACHES --- */
+		 try { // /!\ listeTache = à changer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			listeTache= JDOMLectureTasks.recupInProgressTasks();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tps = new TitledPane[listeTache.size()];
+		 
+		 for(int i = 0; i < listeTache.size(); i++){
+			 taskContent = new TextArea();
+			 taskContent.clear();
+			 taskContent.setText(listeTache.get(i).getContent_task());
+			 contentTitled = listeTache.get(i).getName_task();
+			 current = listeTache.get(i);
+			 tps[i] = new TitledPane(contentTitled, taskContent);
+			
+			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent arg0) {
+						AppToDoListManager.setCurrentTask(current);
+						editTask.setDisable(false);
+						AppToDoListManager.setCurrentTaskInitialized(true);
+						System.out.println(AppToDoListManager.getCurrentTask().toString());
+					}
+				});
+		 }
+		 accordionDernieresTaches.getPanes().addAll(tps);
+		 
+		 
+		 
 		 createTask.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
@@ -46,6 +294,20 @@ public class ConnectController implements Initializable, ControlledScreen {
 	                myController.setScreen(AppToDoListManager.taskManagementID);
 	            }
 	        });
+		 
+		 editTask.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	//Task t = new Task(0, "connectcon", "roller", 2, "2017-02-23", "en_cours", new User(1, "Jon Snow", "secret"), new User(2, "Peter Pan", "clochette"));
+	                //if(!(AppToDoListManager.getCurrentTask() !=null))
+	                		//AppToDoListManager.setCurrentTask(t);
+	            	
+	            	myController.loadScreen(AppToDoListManager.taskManagementID, AppToDoListManager.TaskManagementFile);
+	                myController.setScreen(AppToDoListManager.taskManagementID);
+	            }
+	        });
+		 
+		 
 	    }
 	 
 	 public void setScreenParent(ScreensController screenParent){
