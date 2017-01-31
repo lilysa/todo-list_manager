@@ -179,13 +179,11 @@ public class User {
 				courant.getChild("PriorityTask").setText(Integer.toString(task.getPriority_task()));
 				courant.getChild("ActorTask").setText(Integer.toString(task.getId_actor()));
 				courant.getChild("DateTask").setText(task.getFinal_date_task());
-				//L'utilisateur ne peut finir une tâche que si c'est lui qui l'a réalisé.
-				//(Lors de l'appel de cette fonction, il faudra mettre un if)
-				if (courant.getChild("ActorTask").getTextTrim().equals(task.getId_author())){
-					courant.getChild("StateTask").setText(task.getState_task());
-				}
+				courant.getChild("StateTask").setText(task.getState_task());
 				search = false;
 			}
+				
+			
 			
 		}	
 		
@@ -194,5 +192,7 @@ public class User {
 		
 		
 	}
+	
+
 	
 }
