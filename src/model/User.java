@@ -65,7 +65,7 @@ public class User {
 	
 	//VERIFIE EXISTENCE ACTOR
 	//L'utilisateur ne doit pas pouvoir créer une tâche ayant un acteur fictif
-	public boolean existActor (String actor) throws JDOMException, IOException {
+	public static int existActor (String actor) throws JDOMException, IOException {
 		SAXBuilder sxb = new SAXBuilder();
 	    document = sxb.build(new File("AllTheUsers.xml"));
 	    racine = document.getRootElement();
@@ -81,16 +81,16 @@ public class User {
 			j++;
 			if (j<nbNode) {
 				if(courant.getChild("NameUser").getTextTrim().equals(actor)){
-					return true;
+					return Integer.parseInt(courant.getChild("IDUser").getTextTrim());
 				}
 			}
 		}
 		
-		return false;
+		return -1;
 	}
 	
 	//AJOUTER UNE TACHE
-	public void create_task (Task task) throws JDOMException, IOException {
+	public static void create_task (Task task) throws JDOMException, IOException {
 		
 		SAXBuilder sxb = new SAXBuilder();
 	    document = sxb.build(new File("AllTheTasks.xml"));

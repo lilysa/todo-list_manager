@@ -8,7 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.ControlledScreen;
@@ -19,12 +21,12 @@ import model.User;
 public class ConnectController implements Initializable, ControlledScreen {
 	ScreensController myController; 
 	
-	@FXML	VBox en_cours;
-	@FXML	VBox urgentes;
-	@FXML	VBox finies;
-	@FXML	VBox non_attribuees;
-	@FXML	VBox vos_taches;
-	@FXML	VBox pretes;
+	@FXML	ContextMenu encours;
+	@FXML	ContextMenu urgentes;
+	@FXML	ContextMenu finies;
+	@FXML	ContextMenu nonAttribuees;
+	@FXML	ContextMenu vosTaches;
+	@FXML	Accordion pretes;
 	@FXML	Button createTask;
 	@FXML	Button sortByEndDate;
 	@FXML	Button sortByDoer;
@@ -42,8 +44,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 	                //if(!(AppToDoListManager.getCurrentTask() !=null))
 	                		//AppToDoListManager.setCurrentTask(t);
 	            	
-	            	myController.loadScreen(AppToDoListManager.taskManagementID, AppToDoListManager.TaskManagementFile);
-	                myController.setScreen(AppToDoListManager.taskManagementID);
+	            	myController.loadScreen(AppToDoListManager.createTaskID, AppToDoListManager.CreateTaskFile);
+	                myController.setScreen(AppToDoListManager.createTaskID);
 	            }
 	        });
 	    }

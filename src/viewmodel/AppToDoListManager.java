@@ -29,6 +29,10 @@ public class AppToDoListManager extends Application {
     public static String taskManagementID = "TaskManagement";
     public static String TaskManagementFile = "../view/TaskManagement.fxml";
     
+    public static String createTaskID = "CreateTask";
+    public static String CreateTaskFile = "../view/CreateTask.fxml";
+    
+    
     //Client variables
     public static Socket socket = null;
 	public static Thread t1;
@@ -48,6 +52,10 @@ public class AppToDoListManager extends Application {
 		AppToDoListManager.currentUser = currentUser;
 	}
 
+	public static User getCurrentUser() {
+		return currentUser;
+	}
+	
 	public static void setCurrentTask(Task t){
 		/*AppToDoListManager.currentTask.setActor_task(t.getActor_task());
     	AppToDoListManager.currentTask.setAuthor_task(t.getAuthor_task());

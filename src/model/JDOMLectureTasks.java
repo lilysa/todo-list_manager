@@ -167,7 +167,7 @@ public static List<Task> recupTasksWithoutActor() throws JDOMException, IOExcept
 		   Element courant = (Element)i.next();
 		   j++;
 		   if (j < nbNode){
-		   if(courant.getChild("ActorTask").getTextTrim().equals("0")){
+		   if(courant.getChild("ActorTask").getTextTrim().equals("-2")){
 			   listTaskWithoutActor.add(new Task(courant.getChild("IDTask").getTextTrim()+"_"
 					   			+courant.getChild("NameTask").getTextTrim()+"_"+courant.getChild("ContentTask").getTextTrim()
 					   			+"_"+courant.getChild("PriorityTask").getTextTrim()+"_"+courant.getChild("DateTask").getTextTrim()
@@ -228,7 +228,7 @@ public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMExce
     
     int nbNode = listTask.size();
 	if (nbNode>1){
-    Element last1 = listTask.get(nbNode);
+    Element last1 = listTask.get(nbNode-1);
     TwoLastTasks.add(new Task(last1.getChild("IDTask").getTextTrim()+"_"
    			+last1.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
    			+"_"+last1.getChild("PriorityTask").getTextTrim()+"_"+last1.getChild("DateTask").getTextTrim()
@@ -236,7 +236,7 @@ public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMExce
    			+"_"+last1.getChild("ActorTask").getTextTrim()));
    
     if(nbNode>2){
-    Element last2 = listTask.get(nbNode-1);
+    Element last2 = listTask.get(nbNode-2);
     TwoLastTasks.add(new Task(last2.getChild("IDTask").getTextTrim()+"_"
    			+last2.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
    			+"_"+last2.getChild("PriorityTask").getTextTrim()+"_"+last2.getChild("DateTask").getTextTrim()
