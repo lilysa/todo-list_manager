@@ -62,7 +62,7 @@ public class AuthentificationController implements Initializable, 	ControlledScr
 		 signUpLink.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	                System.out.println("That was easy, wasn't it?");
+	                
 	                myController.setScreen(AppToDoListManager.signUpID);
 	            }
 	        });

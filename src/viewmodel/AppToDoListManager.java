@@ -40,19 +40,18 @@ public class AppToDoListManager extends Application {
 	private static PrintWriter out = null;
 	private static BufferedReader in = null;
 	private static boolean connect = false;
-    
+    private static boolean currentTaskInitialized = false;
     
     //private static Task currentTask = new Task(0, "app", "todolist", 0, "25/02/2017", "finie", new User(1, "Rex", "toutou"), new User(2, "stich", "lilo"));
     //public static Task test = new Task(0, "app2", "totodolsit", 2, "01/05/2017", "prete", new User(3, "Kirikou", "secret"), new User(4, "Sorciere", "clochette"));
     //private static User currentUser = new User(9, "Dr. Acula", "Vlad");
-    private static User currentUser = null;
-    private static Task currentTask = null;
+    private static User currentUser = new User();
+    private static Task currentTask = new Task();
     
 	public static void setCurrentUser(User currentUser) {
 		AppToDoListManager.currentUser = currentUser;
 	}
-
-	public static User getCurrentUser() {
+	public static User getCurrentUser(){
 		return currentUser;
 	}
 	
@@ -129,5 +128,14 @@ public class AppToDoListManager extends Application {
 		}
 		return "echec de lecture";
 	}
+
+	public static boolean isCurrentTaskInitialized() {
+		return currentTaskInitialized;
+	}
+
+	public static void setCurrentTaskInitialized(boolean bool) {
+		currentTaskInitialized = bool;
+	}
+
 
 }
