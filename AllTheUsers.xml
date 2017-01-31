@@ -1,34 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AllTheUsers>
-  <User>
-    <IDUser>1</IDUser>
-    <NameUser>nom</NameUser>
-    <PswUser>mdp</PswUser>
-  </User>
-  <User>
-    <IDUser>2</IDUser>
-    <NameUser>elisa</NameUser>
-    <PswUser>alcie</PswUser>
-  </User>
-  <User>
-    <IDUser>3</IDUser>
-    <NameUser>alice</NameUser>
-    <PswUser>elisa</PswUser>
-  </User>
-  <User>
-    <IDUser>4</IDUser>
-    <NameUser>toto</NameUser>
-    <PswUser>tata</PswUser>
-  </User>
-  <User>
-    <IDUser>5</IDUser>
-    <NameUser>titi</NameUser>
-    <PswUser>tata</PswUser>
-  </User>
-  <User>
-    <IDUser>6</IDUser>
-    <NameUser>lily</NameUser>
-    <PswUser>lily</PswUser>
-  </User>
   <User />
 </AllTheUsers>

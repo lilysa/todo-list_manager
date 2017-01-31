@@ -63,6 +63,32 @@ public class User {
 		this.psw_user = psw;
 	}
 	
+	//VERIFIE EXISTENCE ACTOR
+	//L'utilisateur ne doit pas pouvoir créer une tâche ayant un acteur fictif
+	public boolean existActor (String actor) throws JDOMException, IOException {
+		SAXBuilder sxb = new SAXBuilder();
+	    document = sxb.build(new File("AllTheUsers.xml"));
+	    racine = document.getRootElement();
+	    
+	    boolean search = true;
+	    int j = 0;
+	    
+	    List<Element> listTask = racine.getChildren("User");
+	    Iterator<Element>i = listTask.iterator();
+	    int nbNode = listTask.size();
+		while((i.hasNext() == true) && (search == true)){
+			Element courant = (Element)i.next();
+			j++;
+			if (j<nbNode) {
+				if(courant.getChild("NameUser").getTextTrim().equals(actor)){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
 	//AJOUTER UNE TACHE
 	public void create_task (Task task) throws JDOMException, IOException {
 		
@@ -151,11 +177,16 @@ public class User {
 				courant.getChild("NameTask").setText(task.getName_task());
 				courant.getChild("ContentTask").setText(task.getContent_task());
 				courant.getChild("PriorityTask").setText(Integer.toString(task.getPriority_task()));
-				courant.getChild("StateTask").setText(task.getState_task());
 				courant.getChild("ActorTask").setText(Integer.toString(task.getId_actor()));
 				courant.getChild("DateTask").setText(task.getFinal_date_task());
+				//L'utilisateur ne peut finir une tâche que si c'est lui qui l'a réalisé.
+				//(Lors de l'appel de cette fonction, il faudra mettre un if)
+				if (courant.getChild("ActorTask").getTextTrim().equals(task.getId_author())){
+					courant.getChild("StateTask").setText(task.getState_task());
+				}
 				search = false;
 			}
+			
 		}	
 		
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());

@@ -52,6 +52,7 @@ public class Task {
 		/**
 		 * @param fullTask doit être de la forme taskId_taskName_taskContent_priority_date_state_idAuthor_idActor
 		 */
+
 		public Task (String fullTask) {
 			String[] partTask = fullTask.split("_");
 			id_task = Integer.parseInt(partTask[0]);
