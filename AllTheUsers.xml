@@ -20,5 +20,10 @@
     <NameUser>alice</NameUser>
     <PswUser>elisa</PswUser>
   </User>
+  <User>
+    <IDUser>5</IDUser>
+    <NameUser>toto</NameUser>
+    <PswUser>tata</PswUser>
+  </User>
   <User />
 </AllTheUsers>

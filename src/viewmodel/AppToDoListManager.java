@@ -76,7 +76,7 @@ public class AppToDoListManager extends Application {
 		//Client connection
 		try {
 			System.out.println("Demande de connexion");
-			socket = new Socket("127.0.0.1",2009);
+			socket = new Socket("127.0.0.1",2010);
 			System.out.println("Connexion établie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connecté
 			
 			out = new PrintWriter(socket.getOutputStream());
