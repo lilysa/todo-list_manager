@@ -81,55 +81,58 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	            	//si idCurrentSUer == id tache alors on peut la supprimer
 	            	//si pas de modif d'état appel de change_task
 	            	try {
-	            	int idActor;
-            		if (chooseMaker.getText().isEmpty()) {
-            			idActor = -2;
-            		}else {
-            			idActor = User.existActor(chooseMaker.getText());
-            		}
-            		          			
-            		String namet = " ";
-            		if (taskNameDisplay.getText().isEmpty()) {
-            			taskNameDisplay.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
-           			} else 
-           				namet  = taskNameDisplay.getText();
-           		
-           			String contenut = descriptionText.getText();
-           			if (descriptionText.getText().isEmpty())
-           				contenut = " ";
-           		
-            		int priorityt ;
-            		String p = choosePriority.getValue();
-            		if(!(p!=null)){
-            			priorityt = 0;
-            		}else
-            			priorityt = Integer.parseInt(choosePriority.getValue());
-            		
-            		String datet = " ";            	
-            		if (!(endDateDisplay.getValue()!=null)) {
-            			endDateDisplay.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
-            		} else
-            			datet = endDateDisplay.getValue().toString();
-            		
-            		String statet;
-            		if (!(chooseState.getValue()!=null)) {
-            			statet = "a faire";
-            		}else 
-            			statet = chooseState.getValue();
-	            	
-            		
-            		if(!(chooseMaker.getText().equals(AppToDoListManager.getCurrentUser().getName_user()))) {
-	            		if (chooseState.getValue() != AppToDoListManager.getCurrentTask().getState_task()){
-							chooseState.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
-						} else {
-							User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
-			            	myController.setScreen(AppToDoListManager.connectID);
+		            	int idActor;
+	            		if (chooseMaker.getText().isEmpty()) {
+	            			idActor = -2;
+	            		}else {
+	            			idActor = User.existActor(chooseMaker.getText());
 	            		}
-	            	}else {
-						User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
-		            	myController.setScreen(AppToDoListManager.connectID);
-
-	            	}
+	            		          			
+	            		String namet = " ";
+	            		if (taskNameDisplay.getText().isEmpty()) {
+	            			taskNameDisplay.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
+	           			} else 
+	           				namet  = taskNameDisplay.getText();
+	           		
+	           			String contenut = descriptionText.getText();
+	           			if (descriptionText.getText().isEmpty())
+	           				contenut = " ";
+	           		
+	            		int priorityt ;
+	            		String p = choosePriority.getValue();
+	            		if(!(p!=null)){
+	            			priorityt = 0;
+	            		}else
+	            			priorityt = Integer.parseInt(choosePriority.getValue());
+	            		
+	            		String datet = " ";            	
+	            		if (!(endDateDisplay.getValue()!=null)) {
+	            			endDateDisplay.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
+	            		} else
+	            			datet = endDateDisplay.getValue().toString();
+	            		
+	            		String statet;
+	            		if (!(chooseState.getValue()!=null)) {
+	            			statet = "a faire";
+	            		}else 
+	            			statet = chooseState.getValue();
+	            		
+	            		if(!(chooseMaker.getText().equals(AppToDoListManager.getCurrentUser().getName_user()))) {
+		            		if (chooseState.getValue() != AppToDoListManager.getCurrentTask().getState_task()){
+								chooseState.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
+							} else {
+								User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
+								myController.unloadScreen(AppToDoListManager.connectID);
+				            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+				            	myController.setScreen(AppToDoListManager.connectID);
+		            		}
+		            	}else {
+							User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
+							myController.unloadScreen(AppToDoListManager.connectID);
+			            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+			            	myController.setScreen(AppToDoListManager.connectID);
+	
+		            	}
 	            	
 	            	} catch (JDOMException e) {
 						// TODO Auto-generated catch block
@@ -138,6 +141,8 @@ public class TaskManagementController implements Initializable, ControlledScreen
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+
+	            	
 
 	            }
 	        });

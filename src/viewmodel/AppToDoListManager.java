@@ -7,10 +7,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.jdom2.JDOMException;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.JDOMLectureTasks;
 import model.ScreensController;
 import model.Task;
 import model.User;
@@ -47,7 +50,7 @@ public class AppToDoListManager extends Application {
     //private static User currentUser = new User(9, "Dr. Acula", "Vlad");
     private static User currentUser = new User();
     private static Task currentTask = new Task();
-    
+
 	public static void setCurrentUser(User currentUser) {
 		AppToDoListManager.currentUser = currentUser;
 	}
@@ -135,6 +138,21 @@ public class AppToDoListManager extends Application {
 
 	public static void setCurrentTaskInitialized(boolean bool) {
 		currentTaskInitialized = bool;
+	}
+	
+	public static Task getTaskFromId(String taskNameDisplay){
+		String[] splitS = taskNameDisplay.split("_");
+		try {
+			Task t = JDOMLectureTasks.obtainTask(splitS[1]);
+			return t;
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 
