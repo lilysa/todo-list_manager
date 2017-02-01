@@ -15,13 +15,10 @@ import org.jdom2.output.XMLOutputter;
 public class Task {
 
 	private int id_task = 0;
-	//private int id_user = 0;
 	private String name_task = null ;
 	private String content_task = null;
 	private int priority_task = 0 ;
 	private String final_date_task = null;
-	//public enum state {à_faire, en_cours, fini };
-	//private state state_task;
 	private String state_task = null;
 	private int id_author = 0;
 	private int id_actor = 0;
@@ -31,7 +28,6 @@ public class Task {
 	public Task (int idt, String name, String content, int priority, String final_date, String state, int author, int actor) {
 		
 		id_task = idt;
-		//id_user = idu;
 		name_task = name;
 		content_task = content;
 		priority_task = priority;

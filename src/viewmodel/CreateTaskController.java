@@ -41,13 +41,6 @@ public class CreateTaskController implements Initializable, ControlledScreen{
 	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
-	        // TODO
-		 	//taskNameDisplay.setText(AppToDoListManager.getCurrentTask().getName_task());
-		 	//chooseMaker.setText(AppToDoListManager.getCurrentTask().getId_actor().getName_user());
-		 	//endDateDisplay.setValue(date.parse(AppToDoListManager.getCurrentTask().getFinal_date_task()));
-		 	//choosePriority.getSelectionModel().select(AppToDoListManager.getCurrentTask().getPriority_task());
-		 	//descriptionText.setText(AppToDoListManager.getCurrentTask().getContent_task());
-		 	//chooseState.getSelectionModel().select(AppToDoListManager.getCurrentTask().getState_task());
 		 	
 		 	/*Button Action Definitions*/
 		 	cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,10 +53,7 @@ public class CreateTaskController implements Initializable, ControlledScreen{
 		 	saveButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	//AppToDoListManager.setCurrentTask(new Task(7, taskNameDisplay.getText(), descriptionText.getText(), Integer.parseInt(choosePriority.getValue()), endDateDisplay.getValue().toString(),chooseState.getPromptText(), u, AppToDoListManager.getCurrentUser()));
-	            		//potentiellement ici on unloaderait connect screen pour le reloader pour "actualiser"
-	                //endDateDisplay.getValue().toString();
-	      
+	            		      
 	            	try {
 	            		
 	            		int idActor;
