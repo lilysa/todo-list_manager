@@ -101,7 +101,7 @@ public class CreateTaskController implements Initializable, ControlledScreen{
 	            		
 	            			String statet;
 	            			if (!(chooseState.getValue()!=null)) {
-	            				statet = "a faire";
+	            				statet = "Prête";
 	            			}else 
 	            				statet = chooseState.getValue();
 	            		

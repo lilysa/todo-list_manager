@@ -113,7 +113,7 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	            		
 	            		String statet;
 	            		if (!(chooseState.getValue()!=null)) {
-	            			statet = "a faire";
+	            			statet = "Prête";
 	            		}else 
 	            			statet = chooseState.getValue();
 	            		
@@ -121,13 +121,13 @@ public class TaskManagementController implements Initializable, ControlledScreen
 		            		if (chooseState.getValue() != AppToDoListManager.getCurrentTask().getState_task()){
 								chooseState.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));
 							} else {
-								User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
+								User.change_task(new Task(AppToDoListManager.getCurrentTask().getId_task(), namet, contenut, priorityt, datet, statet,AppToDoListManager.getCurrentTask().getId_author(),idActor));
 								myController.unloadScreen(AppToDoListManager.connectID);
 				            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
 				            	myController.setScreen(AppToDoListManager.connectID);
 		            		}
 		            	}else {
-							User.change_task(new Task(0, namet, contenut, priorityt, datet, statet,0,idActor));
+							User.change_task(new Task(AppToDoListManager.getCurrentTask().getId_task(), namet, contenut, priorityt, datet, statet,AppToDoListManager.getCurrentTask().getId_author(),idActor));
 							myController.unloadScreen(AppToDoListManager.connectID);
 			            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
 			            	myController.setScreen(AppToDoListManager.connectID);
