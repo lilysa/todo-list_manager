@@ -296,7 +296,41 @@ public static String displayTask(Task t) throws JDOMException, IOException {
 	return display;
 }
 
-
+//PETITE FONCTION POUR RECUPERER TACHE AVEC ID
+public static Task obtainTask(String idT) throws JDOMException, IOException {
+	Task t = new Task();
+	
+	SAXBuilder sxb = new SAXBuilder();
+  document = sxb.build(new File("AllTheTasks.xml"));
+  racine = document.getRootElement();
+  
+  List<Element> listTask = racine.getChildren("Task");
+  Iterator<Element>i = listTask.iterator();
+  
+  boolean search = true;
+  int nbNode = listTask.size();
+  int j = 0;
+	
+	while((i.hasNext() == true) && (search == true)){
+		   Element courant = (Element)i.next();
+		   String st = new String();
+		   if(courant.getChild("IDTask").getTextTrim().equals(idT)){
+			   st=courant.getChild("IDTask").getTextTrim()+"_"+
+					   courant.getChild("NameTask").getTextTrim()+"_"+
+					   courant.getChild("ContentTask").getTextTrim()+"_"+
+					   courant.getChild("PriorityTask").getTextTrim()+"_"+
+					   courant.getChild("DateTask").getTextTrim()+"_"+
+					   courant.getChild("StateTask").getTextTrim()+"_"+
+					   courant.getChild("AuthorTask").getTextTrim()+"_"+
+					   courant.getChild("ActorTask").getTextTrim();
+					   
+			   t = new Task(st);
+			   search = false;
+		   }
+			   
+		   }    
+	return t;
+}
 
 }
 

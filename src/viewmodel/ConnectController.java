@@ -52,6 +52,9 @@ public class ConnectController implements Initializable, ControlledScreen {
 	String contentTitled;
 	TextArea taskContent;
 	
+
+	
+	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb) {
 		 todaysDate.setText(LocalDate.now().toString());
@@ -81,17 +84,25 @@ public class ConnectController implements Initializable, ControlledScreen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
 			
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
@@ -121,17 +132,25 @@ public class ConnectController implements Initializable, ControlledScreen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
 			
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
@@ -142,10 +161,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 try {
 			listeTache= JDOMLectureTasks.recupYourTasks(Integer.toString(AppToDoListManager.getCurrentUser().getId_user()));
 		} catch (JDOMException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		tps = new TitledPane[listeTache.size()];
@@ -156,23 +173,29 @@ public class ConnectController implements Initializable, ControlledScreen {
 			 try {
 					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
 				} catch (JDOMException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
-			
+			 
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
@@ -203,17 +226,25 @@ public class ConnectController implements Initializable, ControlledScreen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
 			
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
@@ -237,6 +268,7 @@ public class ConnectController implements Initializable, ControlledScreen {
 			 taskContent.clear();
 			 try {
 					taskContent.setText(JDOMLectureTasks.displayTask(listeTache.get(i)));
+					
 				} catch (JDOMException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -244,22 +276,28 @@ public class ConnectController implements Initializable, ControlledScreen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
-			
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
 		 accordionUrgentes.getPanes().addAll(tps);
-		 
 		 
 		 /* --- INITIALISATION TACHES ENCOURS --- */
 		 try {
@@ -285,17 +323,25 @@ public class ConnectController implements Initializable, ControlledScreen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
 			
 			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
+						try{
+							String clickedTaskName = ((Text)arg0.getTarget()).getText();
+							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							editTask.setDisable(false);
+							AppToDoListManager.setCurrentTaskInitialized(true);
+							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+						}catch(ClassCastException e){
+							e.printStackTrace();
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
 		 }
@@ -326,20 +372,20 @@ public class ConnectController implements Initializable, ControlledScreen {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 
-			 contentTitled = listeTache.get(i).getName_task();
-			 current = listeTache.get(i);
+			 taskContent.setEditable(false);
+			 String contenu= listeTache.get(i).getName_task() + "_" + Integer.toString(listeTache.get(i).getId_task());
+			 contentTitled = contenu;
 			 tps[i] = new TitledPane(contentTitled, taskContent);
 			
-			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent arg0) {
-						AppToDoListManager.setCurrentTask(current);
-						editTask.setDisable(false);
-						AppToDoListManager.setCurrentTaskInitialized(true);
-						System.out.println(AppToDoListManager.getCurrentTask().toString());
-					}
-				});
+//			 tps[i].setOnMouseClicked(new EventHandler<MouseEvent>() {
+//					@Override
+//					public void handle(MouseEvent arg0) {
+//						AppToDoListManager.setCurrentTask(current);
+//						editTask.setDisable(false);
+//						AppToDoListManager.setCurrentTaskInitialized(true);
+//						System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
+//					}
+//				});
 		 }
 		 accordionDernieresTaches.getPanes().addAll(tps);
 		 

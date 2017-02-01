@@ -75,6 +75,8 @@ public class TaskManagementController implements Initializable, ControlledScreen
 	            	//si idCurrentSUer == id tache alors on peut la supprimer
 	            	//si pas de modif d'état appel de change_task
 	            	
+	            	myController.unloadScreen(AppToDoListManager.connectID);
+	            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
 	            	myController.setScreen(AppToDoListManager.connectID);
 	            }
 	        });
