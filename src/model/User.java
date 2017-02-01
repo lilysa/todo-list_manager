@@ -160,7 +160,7 @@ public class User {
 	}
 	
 	//MODIFIER UNE TACHE
-	public void change_task(Task task) throws JDOMException, IOException {
+	public static void change_task(Task task) throws JDOMException, IOException {
 		SAXBuilder sxb = new SAXBuilder();
 	     document = sxb.build(new File("AllTheTasks.xml"));
 	     racine = document.getRootElement();
