@@ -109,7 +109,9 @@ public class CreateTaskController implements Initializable, ControlledScreen{
 						
 	            		if ((idActor != -1)&&(!namet.equals(" "))&&(!datet.equals(" "))){
 							User.create_task(new Task(0, namet, contenut, priorityt, datet, statet,idAuthor,idActor));
-							myController.setScreen(AppToDoListManager.connectID);
+							myController.unloadScreen(AppToDoListManager.connectID);
+			            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+			            	myController.setScreen(AppToDoListManager.connectID);
 						}else {
 							if (idActor == -1) {
 							chooseMaker.setStyle("-fx-control-inner-background: #"+valueError.toString().substring(2));

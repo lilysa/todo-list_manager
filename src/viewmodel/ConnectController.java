@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 
@@ -28,6 +29,7 @@ import model.ControlledScreen;
 import model.JDOMLectureTasks;
 import model.ScreensController;
 import model.Task;
+import model.User;
 
 
 public class ConnectController implements Initializable, ControlledScreen {
@@ -42,6 +44,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 	@FXML	Accordion accordionDernieresTaches;
 	@FXML	Button createTask;
 	@FXML	Button editTask;
+	@FXML	Button deleteTask;
+	@FXML	TextField selectedTask;
 
 	@FXML	Text todaysDate;
 	
@@ -59,6 +63,7 @@ public class ConnectController implements Initializable, ControlledScreen {
 	    public void initialize(URL url, ResourceBundle rb) {
 		 todaysDate.setText(LocalDate.now().toString());
 		 listeTache = new ArrayList<Task>();
+		 selectedTask.setEditable(false);
 		
 		 /* --- INITIALISATION TACHES PRETES --- */
 		 try {
@@ -95,6 +100,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -143,6 +150,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -188,6 +197,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -237,6 +248,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -286,6 +299,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -334,6 +349,8 @@ public class ConnectController implements Initializable, ControlledScreen {
 						try{
 							String clickedTaskName = ((Text)arg0.getTarget()).getText();
 							AppToDoListManager.setCurrentTask(AppToDoListManager.getTaskFromId(clickedTaskName));
+							selectedTask.setText(clickedTaskName);
+							deleteTask.setDisable(false);
 							editTask.setDisable(false);
 							AppToDoListManager.setCurrentTaskInitialized(true);
 							System.out.println("currentTaskApp : " + AppToDoListManager.getCurrentTask().toString());
@@ -415,6 +432,27 @@ public class ConnectController implements Initializable, ControlledScreen {
 	            }
 	        });
 		 
+		 deleteTask.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	try {
+						User.supress_task(AppToDoListManager.getCurrentTask());
+					} catch (JDOMException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            	AppToDoListManager.setCurrentTask(null);
+	            	AppToDoListManager.setCurrentTaskInitialized(false);
+	            	deleteTask.setDisable(true);
+	            	editTask.setDisable(true);
+	            	myController.unloadScreen(AppToDoListManager.connectID);
+	            	myController.loadScreen(AppToDoListManager.connectID, AppToDoListManager.ConnectFile);
+	            	myController.setScreen(AppToDoListManager.connectID);
+	            }
+	        });
 		 
 	    }
 	 
