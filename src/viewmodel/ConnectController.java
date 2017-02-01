@@ -254,7 +254,7 @@ public class ConnectController implements Initializable, ControlledScreen {
 		 
 		 /* --- INITIALISATION TACHES DERNIERESTACHES --- */
 		 try { // /!\ listeTache = à changer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			listeTache= JDOMLectureTasks.recupInProgressTasks();
+			listeTache= JDOMLectureTasks.recupTwoLastTasks();
 		} catch (JDOMException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

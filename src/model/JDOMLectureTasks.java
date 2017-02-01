@@ -216,7 +216,7 @@ return listYourTask;
 }
 
 //POUR RECUPERER LES DEUX DERNIERES TACHES
-public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMException, IOException {
+public static List<Task> recupTwoLastTasks() throws JDOMException, IOException {
 	
 	List<Task> TwoLastTasks = new ArrayList<Task>();
 	
@@ -227,16 +227,21 @@ public static List<Task> recupTwoLastTasks(String IDcourantUser) throws JDOMExce
     List<Element> listTask = racine.getChildren("Task");
     
     int nbNode = listTask.size();
+    System.out.println("il y a : "+nbNode+"tasks");
+    
 	if (nbNode>1){
-    Element last1 = listTask.get(nbNode-1);
+    Element last1 = listTask.get(nbNode-2);
+   
     TwoLastTasks.add(new Task(last1.getChild("IDTask").getTextTrim()+"_"
    			+last1.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
    			+"_"+last1.getChild("PriorityTask").getTextTrim()+"_"+last1.getChild("DateTask").getTextTrim()
    			+"_"+last1.getChild("StateTask").getTextTrim()+"_"+last1.getChild("AuthorTask").getTextTrim()
    			+"_"+last1.getChild("ActorTask").getTextTrim()));
+    
    
     if(nbNode>2){
-    Element last2 = listTask.get(nbNode-2);
+    Element last2 = listTask.get(nbNode-3);
+    
     TwoLastTasks.add(new Task(last2.getChild("IDTask").getTextTrim()+"_"
    			+last2.getChild("NameTask").getTextTrim()+"_"+last1.getChild("ContentTask").getTextTrim()
    			+"_"+last2.getChild("PriorityTask").getTextTrim()+"_"+last2.getChild("DateTask").getTextTrim()
